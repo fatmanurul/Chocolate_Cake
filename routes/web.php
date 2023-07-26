@@ -3,6 +3,7 @@
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\DashboardArtikelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,11 @@ use App\Http\Controllers\ArtikelController;
 |
 */
 
-Route::get('/', [ArtikelController::class, '']);
+Route::get('/', function () {
+    return view('artikels',[
+        "title" => "Artikels"
+    ]);
+});
 
 Route::get('/categories', function () {
     return view('kategori',[
@@ -30,6 +35,12 @@ Route::get('/categories', function () {
 //     ]);
 // });
 
-Route::get('/artikels',[ArtikelController::class, 'index']);
-Route::get('/artikels/{artikel}',[ArtikelController::class, 'show']);
+// Route::get('/artikels',[ArtikelController::class, 'index']);
+// Route::get('/artikels/{artikel}',[ArtikelController::class, 'show']);
+
+Route::get('/dashboard',function(){
+    return view('dashboard.index');
+});
+
+Route::resource('/dashboard/artikels',DashboardArtikelController::class);
 
