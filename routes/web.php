@@ -2,8 +2,11 @@
 
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CobaController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardArtikelController;
+use App\Http\Controllers\DashboardKategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +45,17 @@ Route::get('/dashboard',function(){
     return view('dashboard.index');
 });
 
+Route::get('/dashboard/kategoris/1', [CobaController::class,'show']);
+Route::get('/dashboard/kategoris/1/edit', [CobaController::class,'edit']);
+Route::resource('/dashboard/kategoris', DashboardKategoryController::class);
+
+Route::get('/dashboard/artikels/1', [CobaController::class,'show']);
+Route::get('/dashboard/artikels/1/edit', [CobaController::class,'edit']);
+
+
 Route::resource('/dashboard/artikels',DashboardArtikelController::class);
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 

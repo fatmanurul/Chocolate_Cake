@@ -10,7 +10,7 @@
      </div>
       @endif
       <div class="table-responsive col-lg-8">
-        <a href="/dashboard/artikels/create" class="btn btn-primary mb-3">Tambah Artikel Baru</a>
+        <a href="/dashboard/kategoris/create" class="btn btn-primary mb-3">Tambah Artikel Baru</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -26,8 +26,8 @@
               <td>Brownies yang enak</td>
               <td>Brownies</td>
               <td>
-                <a href="/dashboard/artikels/1" class="badge bg-info"><span data-feather="eye"></span></a>
-                <a href="/dashboard/artikels/1/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <a href="/dashboard/kategoris/1" class="badge bg-info"><span data-feather="eye"></span></a>
+                <a href="/dashboard/kategoris/1/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
                 <a href="" class="badge bg-danger"><span data-feather="x-circle"></span></a>
               </td>
             </tr>

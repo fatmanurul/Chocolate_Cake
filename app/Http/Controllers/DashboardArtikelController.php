@@ -39,9 +39,14 @@ class DashboardArtikelController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'category_id' => 'required',
+            'image' => 'image|file|max:1024',
             'body' => 'required'
         ]);
 
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('posts-images');
+        }
+                                                
         // $validatedData['user_id'] = auth()->user()->id;
          $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         // return $request;
@@ -56,10 +61,8 @@ class DashboardArtikelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Artikel $artikel)
-    {
-        return view('dashboard.artikels.show',[
-            'artikel' => $artikel
-        ]);
+     {
+        return view('dashboard.artikels.show');
     }
 
     /**
@@ -70,7 +73,9 @@ class DashboardArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
-        //
+        return view('dashboard.artikels.edit',[
+            'artikel' => $artikel
+        ]);
     }
 
     /**
@@ -88,7 +93,7 @@ class DashboardArtikelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Artikel  $artikel
+     * @param  \App\Models\Artikel $artikel
      * @return \Illuminate\Http\Response
      */
     public function destroy(Artikel $artikel)
