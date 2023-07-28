@@ -16,10 +16,6 @@ class CobaController extends Controller
         return view('dashboard.artikels.edit');
     }
 
-    public function showkategori()
-     {
-        return view('dashboard.kategoris.show');
-    }
 
     public function editkategori()
     {

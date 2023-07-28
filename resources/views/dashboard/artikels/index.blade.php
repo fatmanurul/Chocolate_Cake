@@ -1,5 +1,7 @@
 @extends('dashboard.layouts.main')
-
+@section('title')
+Halaman Daftar Artikel
+@endsection
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Artikel Saya</h1>
@@ -26,8 +28,8 @@
               <td>Brownies yang enak</td>
               <td>Brownies</td>
               <td>
-                <a href="/dashboard/artikels/1" class="badge bg-info"><span data-feather="eye"></span></a>
-                <a href="/dashboard/artikels/1/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <a href="/dashboard/artikels/judul-artikel" class="badge bg-info"><span data-feather="eye"></span></a>
+                <a href="/dashboard/artikels/judul-artikel/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
                 <a href="" class="badge bg-danger"><span data-feather="x-circle"></span></a>
               </td>
             </tr>

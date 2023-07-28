@@ -1,5 +1,7 @@
 @extends('dashboard.layouts.main')
-
+@section('title')
+Halaman Ubah Artikel
+@endsection
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Ubah Artikel</h1>
@@ -8,12 +10,12 @@
 <form method="post" action="/dashboard/artikels" class="mb-5" enctype="multipart/form-data">
     @csrf
   <div class="mb-3">
-    <label for="title" class="form-label">Title</label>
-    <input type="text" class="form-control @error ('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{old('title')}}">
+    <label for="judul" class="form-label">Judul</label>
+    <input type="text" class="form-control @error ('judul') is-invalid @enderror" id="judul" name="judul" required autofocus value="{{old('judul')}}">
     <!-- pesan error -->
-    @error('title')
+    @error('judul')
     <div class="invalid-feedback">
-        {{ $message }}
+       Silahkan isi kolom ini!
     </div>
     @enderror
   </div>
@@ -36,14 +38,14 @@
     @enderror
 </div>
   <div class="mb-3">
-    <label for="body" class="form-label">Isi artikel</label>
+    <label for="body" class="form-label">Isi Artikel</label>
     @error('body')
     <p class="text-danger">{{ $message }}</p>
     @enderror
     <input id="body" type="hidden" name="body" value="{{old('body')}}">
   <trix-editor input="body"></trix-editor>
   </div>
-  <button type="submit" class="btn btn-primary">Tambah Artikel</button>
+  <button type="submit" class="btn btn-primary">Simpan</button>
   
 </form>
 </div>

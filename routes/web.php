@@ -4,7 +4,9 @@ use App\Models\Artikel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CobaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardArtikelController;
 use App\Http\Controllers\DashboardKategoryController;
 
@@ -45,12 +47,11 @@ Route::get('/dashboard',function(){
     return view('dashboard.index');
 });
 
-Route::get('/dashboard/kategoris/1', [CobaController::class,'show']);
-Route::get('/dashboard/kategoris/1/edit', [CobaController::class,'edit']);
+Route::get('/dashboard/kategoris/judul-artikel/edit', [CobaController::class,'editkategori']);
 Route::resource('/dashboard/kategoris', DashboardKategoryController::class);
 
-Route::get('/dashboard/artikels/1', [CobaController::class,'show']);
-Route::get('/dashboard/artikels/1/edit', [CobaController::class,'edit']);
+Route::get('/dashboard/artikels/judul-artikel', [CobaController::class,'show']);
+Route::get('/dashboard/artikels/judul-artikel/edit', [CobaController::class,'edit']);
 
 
 Route::resource('/dashboard/artikels',DashboardArtikelController::class);
@@ -59,3 +60,10 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
+Route::get('/detail/cupcake', [DetailController::class, 'Cupcake']);
+Route::get('/detail/brownies', [DetailController::class, 'brownies']);
+Route::get('/detail/cookies', [DetailController::class, 'cookies']);
+
+Route::get('/kategori/brownies', [KategoriController::class, 'brownies']);
+Route::get('/kategori/cookies', [KategoriController::class, 'cookies']);
+Route::get('/kategori/cupcake', [KategoriController::class, 'cupcake']);

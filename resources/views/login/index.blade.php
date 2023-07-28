@@ -1,7 +1,23 @@
-@extends('layouts.main')
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- My style -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- judul halaman ngambil dari -->
+    <title>Halaman Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+     <!-- Boostrap Icons -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-@section('container')
-<div class="row justify-content-center">
+  </head>
+  <body>
+<!-- kasih tau ada navbar -->
+    <!-- Agar tulisan berada di dalam container -->
+    <div class="container mt-4">
+        <!-- memberitahu halaman child -->
+        <div class="row justify-content-center">
     <div class="col-md-4">
         @if(session()->has ('loginError'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -10,25 +26,34 @@
          </div>
         @endif
         <main class="form-signin">
-            <h1 class="h3 mb-3 fw-normal text-center">Please Login</h1>
+            <h1 class="h3 mb-3 fw-normal text-center">Silahkan Login</h1>
           <form action="/login" method="post"> 
             @csrf      
             <div class="form-floating">
               <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{old('email')}}">
-              <label for="email">Email address</label>
+              <label for="email">Alamat Email</label>
               @error('email')
               <div class="invalid-feedback">
-                {{ $message }}
+                email salah
               </div>
               @enderror
             </div>
             <div class="form-floating">
               <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-              <label for="password" required>Password</label>
+              <label for="password" required>Kata Sandi</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
           </form>
         </main>
     </div>
 </div>
-@endsection
+
+        
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <footer>
+    </footer>
+  </body>
+</html>
+
