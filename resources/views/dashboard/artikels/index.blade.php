@@ -12,7 +12,7 @@ Halaman Daftar Artikel
      </div>
       @endif
       <div class="table-responsive col-lg-8">
-        <a href="/dashboard/artikels/create" class="btn btn-primary mb-3">Tambah Artikel Baru</a>
+        <a href="/articles/create" class="btn btn-primary mb-3">Tambah Artikel Baru</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -25,12 +25,21 @@ Halaman Daftar Artikel
           <tbody>
             <tr>
               <td>1</td>
-              <td>Brownies yang enak</td>
+              <td>Resep Brownies cokelat</td>
               <td>Brownies</td>
               <td>
-                <a href="/dashboard/artikels/judul-artikel" class="badge bg-info"><span data-feather="eye"></span></a>
-                <a href="/dashboard/artikels/judul-artikel/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                <a href="" class="badge bg-danger"><span data-feather="x-circle"></span></a>
+        <div class="row">
+            <div class="col-2">
+                <a href="articles/judul-artikel" class="badge bg-info ms-2"><span data-feather="eye"></span></a>
+            </div> 
+            <div class="col-2">
+                <a href="/articles/judul-artikel/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+            </div>   
+                <!-- <a href="" class="badge bg-danger"><span data-feather="x-circle"></span></a> -->
+                <div class="form-check form-switch col-2">
+                 <input class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                </div>
+        </div>
               </td>
             </tr>
           </tbody>

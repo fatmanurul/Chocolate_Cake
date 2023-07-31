@@ -47,14 +47,23 @@ Route::get('/dashboard',function(){
     return view('dashboard.index');
 });
 
-Route::get('/dashboard/kategoris/judul-artikel/edit', [CobaController::class,'editkategori']);
-Route::resource('/dashboard/kategoris', DashboardKategoryController::class);
+Route::get('/categories/judul-artikel/edit', [CobaController::class,'editkategori']);
+Route::post('/categories/judul-artikel/edit', [CobaController::class,'updatekategori']);
 
-Route::get('/dashboard/artikels/judul-artikel', [CobaController::class,'show']);
-Route::get('/dashboard/artikels/judul-artikel/edit', [CobaController::class,'edit']);
+Route::get('/comments', [CobaController::class,'komentars']);
+
+Route::resource('/categories', DashboardKategoryController::class);
+
+Route::get('/articles/judul-artikel', [CobaController::class,'show']);
+
+Route::get('articles/judul-artikel/edit', [CobaController::class,'edit']);
+Route::post('/articles/judul-artikel/edit', [CobaController::class,'update']);
+
+Route::post('/articles/judul-artikel/edit', [CobaController::class,'update']);
 
 
-Route::resource('/dashboard/artikels',DashboardArtikelController::class);
+
+Route::resource('/articles',DashboardArtikelController::class);
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);

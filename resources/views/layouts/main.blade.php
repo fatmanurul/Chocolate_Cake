@@ -38,7 +38,7 @@ footer .credit a {
           <div class="row">
         @yield('container') 
             <div class="col-3">
-              <h2><p style="font-family:Lucida Bright; text-align:center; color:RGB(228, 216, 178); margin-top:55px; text-shadow: 1px 1px 1px grey;">Kreasikan kreatifitasmu dengan <span style="color:RGB(105, 58, 30);">memulai membuat cake!</span></h2></p>
+              <h2><p style="font-family:Lucida Bright; text-align:center; color:RGB(228, 216, 178); margin-top:17px; text-shadow: 1px 1px 1px grey;">Kreasikan kreatifitasmu dengan <span style="color:RGB(105, 58, 30);">memulai membuat cake!</span></h2></p>
               <hr>
               <h5><b><p style = "font-family:Perpetua; color:RGB(160, 97, 36);">
               Cari Kategori :

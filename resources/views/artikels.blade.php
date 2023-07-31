@@ -11,8 +11,8 @@
                  <img src="../img/browniesCokelat.jpg" style="height: 780px; width: 800px" class="card-img-top" alt="...">
 
                  <div class="card-body">
-                         <div class="card-title"><h4>Tutorial Bootstrap 4 bagian 1</h4></div>
-                         Selamat datang di tutorial bootstrap 4 lengkap dari paling dasar sampai mahir, untuk pemula sampai expert.
+                         <div class="card-title"><h4>Resep Brownies cokelat</h4></div>
+                         Intip yu resep brownies yang satu ini!.
                  </div>
 
                  <div class="card-footer">
@@ -29,8 +29,8 @@
                  <img src="../img/cookies.jpg" style="height: 780px; width: 800px" class="card-img-top" alt="...">
 
                  <div class="card-body">
-                         <div class="card-title"><h4>Tutorial Bootstrap 4 bagian 1</h4></div>
-                         Selamat datang di tutorial bootstrap 4 lengkap dari paling dasar sampai mahir, untuk pemula sampai expert.
+                         <div class="card-title"><h4>Resep kreasi cookies ala rumahan, enak, renyah, dan mudah dibuat</h4></div>
+                         Membuat cookies rumahan yang simpel tetapi enak!
                  </div>
 
                  <div class="card-footer">

@@ -35,7 +35,7 @@ class DashboardKategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('dashboard.kategoris.index');
     }
 
     /**

@@ -36,22 +36,7 @@ class DashboardArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'category_id' => 'required',
-            'image' => 'image|file|max:1024',
-            'body' => 'required'
-        ]);
-
-        if($request->file('image')){
-            $validatedData['image'] = $request->file('image')->store('posts-images');
-        }
-                                                
-        // $validatedData['user_id'] = auth()->user()->id;
-         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
-        // return $request;
-
-        return redirect('dashboard/artikels')->with('success', 'Artikel baru telah ditambahkan!');
+       return view('dashboard.artikels.index');
     }
 
     /**

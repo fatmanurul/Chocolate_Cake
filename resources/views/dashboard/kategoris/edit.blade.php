@@ -7,7 +7,7 @@ Halaman Ubah Kategori
         <h1 class="h2">Ubah Kategori</h1>
       </div>
 <div class="col-lg-8">
-<form method="post" action="/dashboard/kategoris" class="mb-5" enctype="multipart/form-data">
+<form method="post" action="/categories" class="mb-5" enctype="multipart/form-data">
     @csrf
   <div class="mb-3">
     <label for="kategori" class="form-label">Nama Kategori</label>
@@ -19,9 +19,8 @@ Halaman Ubah Kategori
     </div>
     @enderror
   </div>
-  
-  <button type="submit" class="btn btn-primary">Simpan</button>
-  
+  <a href="/categories" class="btn btn-secondary">Batal</a>
+  <button type="submit" class="btn btn-primary">Simpan</button>  
 </form>
 </div>
 @endsection 

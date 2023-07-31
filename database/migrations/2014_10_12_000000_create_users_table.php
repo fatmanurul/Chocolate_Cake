@@ -14,13 +14,23 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->bigIncrements('usr_id');
+            $table->string('usr_name')->unique();
+            $table->string('usr_email')->unique();
+            $table->string('usr_password');
+            $table->string('usr_remember_Token');
+            $table->unsignedBigInteger('usr_created_by')->nullable();
+            $table->unsignedBigInteger('usr_updated_by')->nullable();
+            $table->unsignedBigInteger('usr_deleted_by')->nullable();
+            $table->timestamp('usr_created_at');
+            $table->timestamp('usr_updated_at')->nullable();
+            $table->timestamp('usr_deleted_at')->nullable();
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('usr_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('usr_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('usr_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
         });
     }
 

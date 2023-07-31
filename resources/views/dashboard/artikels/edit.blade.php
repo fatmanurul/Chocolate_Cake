@@ -7,7 +7,7 @@ Halaman Ubah Artikel
         <h1 class="h2">Ubah Artikel</h1>
       </div>
 <div class="col-lg-8">
-<form method="post" action="/dashboard/artikels" class="mb-5" enctype="multipart/form-data">
+<form method="post" action="/articles" class="mb-5" enctype="multipart/form-data">
     @csrf
   <div class="mb-3">
     <label for="judul" class="form-label">Judul</label>
@@ -28,6 +28,16 @@ Halaman Ubah Artikel
  </select>
   </div>
   <div class="mb-3">
+    <label for="kutipan" class="form-label">Kutipan</label>
+    <input type="text" class="form-control @error ('kutipan') is-invalid @enderror" id="kutipan" name="kutipan" required autofocus value="{{old('kutipan')}}">
+    <!-- pesan error -->
+    @error('kutipan')
+    <div class="invalid-feedback">
+       Silahkan isi kolom ini!
+    </div>
+    @enderror
+  </div>
+  <div class="mb-3">
   <label for="image" class="form-label">Gambar Artikel</label>
   <img class="img-preview img-fluid mb-3 col-sm-5">
   <input class="form-control  @error ('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
@@ -45,8 +55,8 @@ Halaman Ubah Artikel
     <input id="body" type="hidden" name="body" value="{{old('body')}}">
   <trix-editor input="body"></trix-editor>
   </div>
+  <a href="/articles" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>
-  
 </form>
 </div>
 <script>

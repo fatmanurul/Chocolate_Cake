@@ -8,11 +8,11 @@
                 <div class="col-12">
                 <div class="card" style="height: 950px; width: 800px">
                 <div class="position-absolute px-3 py-2" style="background-color: rgba(0, 0, 0,0.7)"><a href="#" class="text-white text-decoration-none">Brownies</a></div>
-                        <img src="../img/browniesCokelat.jpg" style="height: 780px; width: 800px" class="card-img-top" alt="...">
+                        <img src="../img/b1.jpg" style="height: 780px; width: 800px" class="card-img-top" alt="...">
 
                         <div class="card-body">
-                                <div class="card-title"><h4>Tutorial Bootstrap 4 bagian 1</h4></div>
-                                Selamat datang di tutorial bootstrap 4 lengkap dari paling dasar sampai mahir, untuk pemula sampai expert.
+                                <div class="card-title"><h4>Brownies Cokelat toping strawberry</h4></div>
+                                Brownies Coklat dengan toping strawberry yang segar
                         </div>
 
                         <div class="card-footer">
@@ -30,8 +30,8 @@
                         <img src="../img/browniesCokelat.jpg" style="height: 780px; width: 800px" class="card-img-top" alt="...">
 
                         <div class="card-body">
-                                <div class="card-title"><h4>Tutorial Bootstrap 4 bagian 1</h4></div>
-                                Selamat datang di tutorial bootstrap 4 lengkap dari paling dasar sampai mahir, untuk pemula sampai expert.
+                                <div class="card-title"><h4>Resep Brownies cokelat</h4></div>
+                         Yuk intip resep brownies yang satu ini!
                         </div>
 
                         <div class="card-footer">
@@ -46,11 +46,11 @@
                 <div class="col-12">
                 <div class="card" style="height: 950px; width: 800px">
                 <div class="position-absolute px-3 py-2" style="background-color: rgba(0, 0, 0,0.7)"><a href="#" class="text-white text-decoration-none">Brownies</a></div>
-                        <img src="../img/browniesCokelat.jpg" style="height: 780px; width: 800px" class="card-img-top" alt="...">
+                        <img src="../img/b2.jpg" style="height: 780px; width: 800px" class="card-img-top" alt="...">
 
                         <div class="card-body">
-                                <div class="card-title"><h4>Tutorial Bootstrap 4 bagian 1</h4></div>
-                                Selamat datang di tutorial bootstrap 4 lengkap dari paling dasar sampai mahir, untuk pemula sampai expert.
+                                <div class="card-title"><h4>Resep Brownies cokelat dengan toping buah</h4></div>
+                                Yuk intip resep brownies yang satu ini!
                         </div>
 
                         <div class="card-footer">
@@ -65,11 +65,11 @@
                 <div class="col-12">
                 <div class="card" style="height: 950px; width: 800px">
                 <div class="position-absolute px-3 py-2" style="background-color: rgba(0, 0, 0,0.7)"><a href="#" class="text-white text-decoration-none">Brownies</a></div>
-                        <img src="../img/browniesCokelat.jpg" style="height: 780px; width: 800px" class="card-img-top" alt="...">
+                        <img src="../img/b3.jpg" style="height: 780px; width: 800px" class="card-img-top" alt="...">
 
                         <div class="card-body">
-                                <div class="card-title"><h4>Tutorial Bootstrap 4 bagian 1</h4></div>
-                                Selamat datang di tutorial bootstrap 4 lengkap dari paling dasar sampai mahir, untuk pemula sampai expert.
+                                <div class="card-title"><h4>Resep brownies cokelat dengan topping oreo</h4></div>
+                                Yuk intip resep brownies yang satu ini!
                         </div>
 
                         <div class="card-footer">

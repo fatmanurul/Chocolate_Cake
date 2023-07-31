@@ -16,9 +16,24 @@ class CobaController extends Controller
         return view('dashboard.artikels.edit');
     }
 
+    public function update()
+    {
+        return view('dashboard.artikels.index');
+    }
+
 
     public function editkategori()
     {
         return view('dashboard.kategoris.edit');
+    }
+
+    public function updatekategori()
+    {
+        return view('dashboard.kategoris.index');
+    }
+
+    public function komentars()
+    {
+        return view('dashboard.komentars.index');
     }
 }
