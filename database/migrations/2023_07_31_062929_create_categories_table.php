@@ -22,7 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->foreign('ctg_created_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('ctg_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('ctg_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
-            $table->timestamp('ctg_created_at');
+            $table->timestamp('ctg_created_at')->nullable();
             $table->timestamp('ctg_updated_at')->nullable();
             $table->timestamp('ctg_deleted_at')->nullable();
         });

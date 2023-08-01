@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CobaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardArtikelController;
@@ -21,27 +22,11 @@ use App\Http\Controllers\DashboardKategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('artikels',[
-        "title" => "Artikels"
-    ]);
-});
+// route halaman awal
+Route::get('/', [ArticleController::class,'index']);
+Route::get('/detail/{slug}', [ArticleController::class,'show']);
 
-Route::get('/categories', function () {
-    return view('kategori',[
-        "title" => "kategori"
-    ]);
-});
-
-// Route::get('/artikels{slug}', function ($slug){
-//     return view('artikel',[
-//         "title" => "single post",
-//         "post" => Artikel::find($slug)
-//     ]);
-// });
-
-// Route::get('/artikels',[ArtikelController::class, 'index']);
-// Route::get('/artikels/{artikel}',[ArtikelController::class, 'show']);
+Route::get('/kategori/{id}', [ArticleController::class, 'category']);
 
 Route::get('/dashboard',function(){
     return view('dashboard.index');
@@ -73,6 +58,6 @@ Route::get('/detail/cupcake', [DetailController::class, 'Cupcake']);
 Route::get('/detail/brownies', [DetailController::class, 'brownies']);
 Route::get('/detail/cookies', [DetailController::class, 'cookies']);
 
-Route::get('/kategori/brownies', [KategoriController::class, 'brownies']);
+
 Route::get('/kategori/cookies', [KategoriController::class, 'cookies']);
 Route::get('/kategori/cupcake', [KategoriController::class, 'cupcake']);

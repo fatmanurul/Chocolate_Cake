@@ -25,15 +25,15 @@ class CreateArticlesTable extends Migration
             $table->unsignedBigInteger('art_created_by')->nullable();
             $table->unsignedBigInteger('art_updated_by')->nullable();
             $table->unsignedBigInteger('art_deleted_by')->nullable();
-            $table->timestamp('art_created_at');
+            $table->timestamp('art_created_at')->nullable();
             $table->timestamp('art_updated_at')->nullable();
             $table->timestamp('art_deleted_at')->nullable();
         });
 
         Schema::table('articles', function (Blueprint $table) {
-            $table->foreign('art_created_by')->references('art_id')->on('articles')->onDelete('cascade');
-            $table->foreign('art_updated_by')->references('art_id')->on('articles')->onDelete('cascade');
-            $table->foreign('art_deleted_by')->references('art_id')->on('articles')->onDelete('cascade');
+            $table->foreign('art_created_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('art_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('art_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -17,28 +17,33 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    const CREATED_AT = 'usr_created_at';
+    const UPDATED_AT = 'usr_updated_at';
+    const DELETED_AT = 'usr_deleted_at';
+    // protected $fillable = [
+    //     'usr_name',
+    //     'usr_email',
+    //     'usr_password',
+    // ];
+
+    protected $guarded = ['usr_id'];
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    // protected $hidden = [
+    // //     'usr_password',
+    //     'usr_remember_Token',
+    // ];
 
     /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // protected $casts = [
+    //     'usr_email_verified_at' => 'datetime',
+    // ];
 }
