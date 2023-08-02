@@ -14,4 +14,8 @@ class Article extends Model
     use HasFactory;
 
     protected $guarded = ['art_id'];
+
+    public function Category(){ //method baru untuk terhubung dengan category, nama method sama dengan nama model nya
+       return $this->belongsTo(Category::class); //satu postingan memiliki satu ketegori
+    } //mengembalikan relasi model post terhadap model category
 }

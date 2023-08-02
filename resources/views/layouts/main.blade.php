@@ -38,7 +38,6 @@ footer .credit a {
           <div class="row">
         @yield('container') 
             <div class="col-3">
-            @foreach($category as $category)
               <h2><p style="font-family:Lucida Bright; text-align:center; color:RGB(228, 216, 178); margin-top:17px; text-shadow: 1px 1px 1px grey;">Kreasikan kreatifitasmu dengan <span style="color:RGB(105, 58, 30);">memulai membuat cake!</span></h2></p>
               <hr>
               <h5><b><p style = "font-family:Perpetua; color:RGB(160, 97, 36);">
@@ -47,9 +46,12 @@ footer .credit a {
               <hr>
               <select onChange="document.location.href=this.options[this.selectedIndex].value;" class="form-select">
               <option value="0" selected>Pilih Kategori</option>
-              <option value="{{$category->ctg_id}}">Brownies</option>
-              <option value="{{$category->ctg_id}}">Cupcake</option>
-              <option value="{{$category->ctg_id}}">Cookies</option>
+              <option value="" href="/categories/{{$articles->Category->ctg_id}}"> 
+              {{ $articles->Category->ctg_name }} >Brownies</option>
+              <option value=""  href="/categories/{{$articles->Category->ctg_id}}"> 
+              {{ $articles->Category->ctg_name }} >Cupcake</option>
+              <option value=""  href="/categories/{{$articles->Category->ctg_id}}"> 
+              {{ $articles->Category->ctg_name }} >Cookies</option>
               <option value="/">All</option>
               </select>
               <hr>
@@ -64,7 +66,6 @@ footer .credit a {
               <small><a href="https://id.wikipedia.org/wiki/Bolu">Selengkapnya di wikipedia cake</a></small>
               </div>
             </div>
-            @endforeach
             @yield('komentar')
           </div >
         </div >

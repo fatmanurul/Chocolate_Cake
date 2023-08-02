@@ -25,39 +25,31 @@ use App\Http\Controllers\DashboardKategoryController;
 // route halaman awal
 Route::get('/', [ArticleController::class,'index']);
 Route::get('/detail/{slug}', [ArticleController::class,'show']);
+Route::get('/kategori/{id}', [ArticleController::class, 'index']);
 
-Route::get('/kategori/{id}', [ArticleController::class, 'category']);
-
-Route::get('/dashboard',function(){
-    return view('dashboard.index');
-});
-
+// route cms kategori
 Route::get('/categories/judul-artikel/edit', [CobaController::class,'editkategori']);
 Route::post('/categories/judul-artikel/edit', [CobaController::class,'updatekategori']);
-
-Route::get('/comments', [CobaController::class,'komentars']);
-
 Route::resource('/categories', DashboardKategoryController::class);
 
+// route comment
+Route::get('/comments', [CobaController::class,'komentars']);
+
+// route artikel
 Route::get('/articles/judul-artikel', [CobaController::class,'show']);
 
 Route::get('articles/judul-artikel/edit', [CobaController::class,'edit']);
 Route::post('/articles/judul-artikel/edit', [CobaController::class,'update']);
 
 Route::post('/articles/judul-artikel/edit', [CobaController::class,'update']);
-
-
-
 Route::resource('/articles',DashboardArtikelController::class);
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+//route auth
+Route::get('/login', [LoginController::class ,'index']);
+Route::post('/login', [LoginController::class ,'authenticate']);
+Route::post('/logout', [LoginController::class ,'logout']);
 
-Route::get('/detail/cupcake', [DetailController::class, 'Cupcake']);
-Route::get('/detail/brownies', [DetailController::class, 'brownies']);
-Route::get('/detail/cookies', [DetailController::class, 'cookies']);
-
-
-Route::get('/kategori/cookies', [KategoriController::class, 'cookies']);
-Route::get('/kategori/cupcake', [KategoriController::class, 'cupcake']);
+// route dashboard
+Route::get('/dashboard',function(){
+    return view('dashboard.index')->middleware('auth'); 
+});

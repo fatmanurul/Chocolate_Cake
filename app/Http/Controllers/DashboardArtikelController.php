@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Artikel;
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -15,7 +15,9 @@ class DashboardArtikelController extends Controller
      */
     public function index()
     {
-        return view('dashboard.artikels.index');
+      return view('dashboard.artikels.index',[
+        'artikel' => Article::all()
+      ]);
     }
 
     /**
@@ -47,7 +49,7 @@ class DashboardArtikelController extends Controller
      */
     public function show(Artikel $artikel)
      {
-        return view('dashboard.artikels.show');
+        return view('dashboard.artikels.show',);
     }
 
     /**

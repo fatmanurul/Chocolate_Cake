@@ -22,10 +22,12 @@ class ArticleController extends Controller
     }
 
     public function category($id){
-      $article_check = Article::where('articles.art_slug', $slug)->first(); //cara mengecek slug pertama
-       $detail_article = Article::select('art_title', 'art_image', 'art_content')->where('articles.art_slug', $slug)->get();
-       return view ('detail-artikel',[
-           'articles' => $detail_article
+      $category = Category::firstWhere('ctg_id', request('category'));
+        return view('category',[
+          'title' => $category->ctg_name, 
+          'article' => $category->article, 
+          'category' => $category->ctg_name
        ]);
    }
-}
+  
+  }

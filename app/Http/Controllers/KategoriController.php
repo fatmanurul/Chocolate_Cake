@@ -8,10 +8,12 @@ class KategoriController extends Controller
 {
     
     public function index($id){
-        $category_check = Category::where('categories.ctg_id', $id)->first(); //cara mengecek id pertama
-         $category = Category::select('ctg_name')->where('categories.ctg_id', $id)->get();
-         return view ('Article',[
-             'category' => $category
-         ]);
+        $category = Category::firstWhere('ctg_id', request('category'));
+        return view('category',[
+          'title' => $category->ctg_name, 
+          'article' => $category->article, 
+          'category' => $category->ctg_name
+
+        ]);
      } 
 }

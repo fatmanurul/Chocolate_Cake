@@ -3,38 +3,61 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index()
-    {
+    public function index (){
         return view('login.index', [
-            'title' => 'Login'
+            'title' => 'login',
+            "active" => "login"
         ]);
     }
+
+
     public function authenticate(Request $request)
     {
-    //   Validasi email dan password
-    $credentials = $request->validate([
-     'email' => 'required|email:dns',
-     'password' => 'required'
-    ]);
+        // $user = User::where('usr_email', '=' , $request->email);
+        // if($user && Hash::check($request->password, $user->usr_password)){
+        //    return 'sukses';
+        // }else{
+        //     return 'eror';
+        // }
+       $credentials = $request->validate([
+        'usr_email' => 'required|email',
+        'usr_password' => 'required'
+       ]);
 
-    //  if()
-        return redirect('/dashboard');
-    //  }
-      return back()->with('loginError', 'Login gagal!');
+       $attempt = [
+        'usr_email' => $request->usr_email,
+        'password' => $request->usr_password
+       ];
+      
+       if(Auth::attempt($attempt)) {
+        $request->session()->regenerate();
+        return redirect()->intended('/dashboard');
+       }
+
+
+
+      return back()->with('loginError', 'login  gagal!');
     }
-    // logout
-    public function logout(Request $request)
-    {
+
+
+    public function logout(){
         Auth::logout();
  
-        $request->session()->invalidate();
+        request()->session()->invalidate();
      
-        $request->session()->regenerateToken();
+        request()->session()->regenerateToken();
      
         return redirect('/login');
+    }
+
+    public function username()
+    {
+        return 'usr_email';
     }
 }
