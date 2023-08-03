@@ -7,7 +7,8 @@ Halaman Ubah Artikel
         <h1 class="h2">Ubah Artikel</h1>
       </div>
 <div class="col-lg-8">
-<form method="post" action="/articles" class="mb-5" enctype="multipart/form-data">
+<form method="post" action="/articles/{{$article->art_slug}}" class="mb-5">
+  @method('put')
     @csrf
   <div class="mb-3">
     <label for="judul" class="form-label">Judul</label>

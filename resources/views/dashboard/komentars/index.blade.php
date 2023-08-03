@@ -11,19 +11,23 @@ Halaman Daftar Kategori
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">Komen artikel</th>
               <th scope="col">Nama</th>
               <th scope="col">Email</th>
               <th scope="col">komentar</th>
             </tr>
           </thead>
           <tbody>
+          @foreach ($comments as $comment)
             <tr>
-              <td>1</td>
-              <td>lovers</td>
-              <td>lovers@gmail.com</td>
-              <td>wah resep nya sangat mudah untuk ditiru dirumah</td>
+              <td>{{$loop->iteration}}</td>
+              <td>{{$comment->art_title}}</td>
+              <td>{{$comment->cmn_name}}</td>
+              <td>{{$comment->cmn_email}}</td>
+              <td>{{$comment->cmn_comment}}</td>
         </div>
             </tr>
+        @endforeach
           </tbody>
         </table>
       </div>

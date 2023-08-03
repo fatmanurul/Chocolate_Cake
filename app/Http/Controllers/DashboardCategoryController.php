@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class DashboardKategoryController extends Controller
+class DashboardCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class DashboardKategoryController extends Controller
      */
     public function index()
     {
-        return view('dashboard.kategoris.index',[
+        return view('dashboard.category.index',[
             'category' => Category::all()
           ]);
     }
@@ -26,7 +26,7 @@ class DashboardKategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.kategoris.create');
+        return view('dashboard.category.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class DashboardKategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('dashboard.kategoris.edit',[
+        return view('dashboard.category.edit',[
             'category' => $category
         ]);
     }

@@ -7,7 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class DashboardArtikelController extends Controller
+class DashboardArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class DashboardArtikelController extends Controller
         $artikel = Article::join('categories','categories.ctg_id', 'articles.art_category_id')
                            ->get();
         $category = Category::all();
-      return view('dashboard.artikels.index',[
+      return view('dashboard.article.index',[
         'artikel' => $artikel,
         'category' => $category
       ]);
@@ -32,7 +32,7 @@ class DashboardArtikelController extends Controller
      */
     public function create()
     {
-        return view('dashboard.artikels.create',[
+        return view('dashboard.article.create',[
             'categories' => Category::all()
         ]);
     }
@@ -75,24 +75,6 @@ class DashboardArtikelController extends Controller
         }
 
         $article->save();
-       
-        // $validatedData = $request->validate([
-        //     'art_title' => 'required|max:255',
-        //     'art_category_id' => 'required',
-        //     'art_excerpt' => 'required',
-        //     'art_image' => 'image',
-        //     'art_content' => 'required'
-        // ]);
-       
-
-        // Article::create([
-        //     'art_title' => $request-> art_title,
-        //     'art_slug' => Str::art_slug($request->art_title),
-        //     'art_category_id' => 1,
-        //     'art_excerpt' => $request->art_excerpt,
-        //     'art_image' => 'art_image',
-        //     'art_content' => $request->art_content
-        // ]);
 
         return redirect('/articles')->with('success', 'Artikel baru telah ditambahkan!');
     }
@@ -109,7 +91,7 @@ class DashboardArtikelController extends Controller
         $artikel = Article::join('categories','categories.ctg_id', 'articles.art_category_id')
                              ->where('art_id',$article->art_id)
                             ->first();
-                    return view('dashboard.artikels.show',[
+                    return view('dashboard.article.show',[
                     'artikel' => $artikel,
                     ]);
     }
@@ -122,9 +104,11 @@ class DashboardArtikelController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('dashboard.artikels.edit',[
+        return view('dashboard.article.edit',[
             'article' => $article
         ]);
+        // $article = Article::where('art_slug', $art_slug)->first();
+        // return view('dashboard.article.edit',['Article' => $article]);
     }
 
     /**
@@ -136,7 +120,21 @@ class DashboardArtikelController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        // $article = Article::where('art_slug', $art_slug)->first();
+
+        // if ($article->art_title == $request->art_title) {
+        //     $article->art_title = $request->art_title;
+        //     $article->update();
+        //     return redirect('Article');
+        // }
+        // $check_article_title = Article::where('art_title', $request->art_title)->first();
+        // if ($check_article_title) {
+        //     return redirect()->back()->with('error', 'Nama artikel sudah digunakan');
+        // }
+        // $article->art_title = $request->art_title;
+        // $article->art_updated_by = Auth()->user()->usr_id;
+        // $article->update();
+        // return redirect('/articles')->with('success', 'jurusan berhasil di ubah');
     }
 
     /**

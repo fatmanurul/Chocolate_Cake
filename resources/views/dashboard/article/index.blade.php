@@ -32,7 +32,7 @@ Halaman Dashboard
                           <a href="/articles/{{ $artikel->art_id }}" class="badge bg-info"><span data-feather="eye"></span></a>
                       </div>    
                       <div>
-                          <a href="" class="badge bg-warning"><span data-feather="edit"></span></a> 
+                          <a href="/articles/{{$artikel->art_slug}}/edit" class="badge bg-warning"><span data-feather="edit"></span></a> 
                       </div>
                       <div class="form-check form-switch col-2">
                           <input class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>

@@ -33,7 +33,7 @@ class ArticleController extends Controller
                         ->where('articles.art_category_id',$id)
                         ->get();
     $category = Category::all();
-     return view ('artikels',['articles'=>$articles],compact('category'));
+     return view ('article',['articles'=>$articles],compact('category'));
    }
   
   }
