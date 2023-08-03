@@ -46,12 +46,9 @@ footer .credit a {
               <hr>
               <select onChange="document.location.href=this.options[this.selectedIndex].value;" class="form-select">
               <option value="0" selected>Pilih Kategori</option>
-              <option value="" href="/categories/{{$articles->Category->ctg_id}}"> 
-              {{ $articles->Category->ctg_name }} >Brownies</option>
-              <option value=""  href="/categories/{{$articles->Category->ctg_id}}"> 
-              {{ $articles->Category->ctg_name }} >Cupcake</option>
-              <option value=""  href="/categories/{{$articles->Category->ctg_id}}"> 
-              {{ $articles->Category->ctg_name }} >Cookies</option>
+              @foreach ($category as $category)
+              <option value="/kategori/{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
+              @endforeach
               <option value="/">All</option>
               </select>
               <hr>

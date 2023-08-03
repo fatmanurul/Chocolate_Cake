@@ -19,12 +19,6 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        // $user = User::where('usr_email', '=' , $request->email);
-        // if($user && Hash::check($request->password, $user->usr_password)){
-        //    return 'sukses';
-        // }else{
-        //     return 'eror';
-        // }
        $credentials = $request->validate([
         'usr_email' => 'required|email',
         'usr_password' => 'required'

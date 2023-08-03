@@ -25,7 +25,7 @@ use App\Http\Controllers\DashboardKategoryController;
 // route halaman awal
 Route::get('/', [ArticleController::class,'index']);
 Route::get('/detail/{slug}', [ArticleController::class,'show']);
-Route::get('/kategori/{id}', [ArticleController::class, 'index']);
+Route::get('/kategori/{id}', [ArticleController::class, 'category']);
 
 // route cms kategori
 Route::get('/categories/judul-artikel/edit', [CobaController::class,'editkategori']);
@@ -35,7 +35,7 @@ Route::resource('/categories', DashboardKategoryController::class);
 // route comment
 Route::get('/comments', [CobaController::class,'komentars']);
 
-// route artikel
+// route cms artikel
 Route::get('/articles/judul-artikel', [CobaController::class,'show']);
 
 Route::get('articles/judul-artikel/edit', [CobaController::class,'edit']);
@@ -51,5 +51,5 @@ Route::post('/logout', [LoginController::class ,'logout']);
 
 // route dashboard
 Route::get('/dashboard',function(){
-    return view('dashboard.index')->middleware('auth'); 
-});
+    return view('dashboard.index'); 
+})->middleware('auth');

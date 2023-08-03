@@ -10,12 +10,12 @@ Halaman Tambah Kategori
 <form method="post" action="/categories" class="mb-5" enctype="multipart/form-data">
     @csrf
   <div class="mb-3">
-    <label for="kategori" class="form-label">Nama Kategori</label>
-    <input type="text" class="form-control @error ('kategori') is-invalid @enderror" id="kategori" name="kategori" required autofocus value="{{old('kategori')}}">
+    <label for="ctg_name" class="form-label">Nama Kategori</label>
+    <input type="text" class="form-control @error ('ctg_name') is-invalid @enderror" id="ctg_name" name="ctg_name" autofocus value="{{old('ctg_name')}}">
     <!-- pesan error -->
-    @error('kategori')
+    @error('ctg_name')
     <div class="invalid-feedback">
-        inputan harus diisi
+        Silahkan isi kolom ini!
     </div>
     @enderror
   </div>

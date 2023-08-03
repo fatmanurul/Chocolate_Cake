@@ -9,6 +9,6 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['usr_id'];
+    protected $guarded = ['cmn_id'];
 
 }

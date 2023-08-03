@@ -5,12 +5,14 @@ Halaman Daftar Kategori
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Kategori</h1>
-      </div>
+</div>
+  <div class="col-lg-8">
       @if(session()->has('success'))
-      <div class="alert alert-success" role="alert">
-  {{ session('success') }}
-     </div>
+          <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
       @endif
+  </div>     
       <div class="table-responsive col-lg-8">
         <a href="/categories/create" class="btn btn-primary mb-3">Tambah Kategori Baru</a>
         <table class="table table-striped table-sm">
@@ -23,12 +25,14 @@ Halaman Daftar Kategori
           </thead>
           <tbody>
             <tr>
-              <td>1</td>
-              <td>Brownies</td>
+            @foreach ($category as $category)
+            <!-- loop iteration mulai dari 1 -->
+              <td>{{$loop->iteration}}</td>
+              <td>{{$category->ctg_name}}</td>
               <td>
               <div class="row"> 
             <div class="col-2">
-                <a href="/categories/judul-artikel/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <a href="/categories/{{$category->ctg_id}}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
             </div>    
                 <!-- <a href="" class="badge bg-danger"><span data-feather="x-circle"></span></a> -->
                 <div class="form-check form-switch col-2">
@@ -37,6 +41,7 @@ Halaman Daftar Kategori
         </div>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

@@ -9,7 +9,8 @@ Halaman Dashboard
         <h1 class="h2">Artikel saya</h1>
       </div>
 
-      <div class="table-responsive">
+      <div class="table-responsive  col-lg-8">
+      <a href="/articles/create" class="btn btn-primary mb-3">Tambah artikel baru</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -20,12 +21,25 @@ Halaman Dashboard
             </tr>
           </thead>
           <tbody>
+            @foreach ($artikel as $artikel)
             <tr>
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
+              <!-- loop iteration mulai dari 1 -->
+              <td>{{$loop->iteration}}</td> 
+              <td>{{$artikel->art_title}}</td>
+              <td>{{$artikel->ctg_name}}</td>
+              <td><div class="row"> 
+                      <div class="col-2">
+                          <a href="/articles/{{ $artikel->art_id }}" class="badge bg-info"><span data-feather="eye"></span></a>
+                      </div>    
+                      <div>
+                          <a href="" class="badge bg-warning"><span data-feather="edit"></span></a> 
+                      </div>
+                      <div class="form-check form-switch col-2">
+                          <input class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                      </div>
+               </div></td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

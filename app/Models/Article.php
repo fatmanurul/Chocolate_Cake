@@ -7,15 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    use HasFactory;
+    protected $table = 'articles';
+    protected $primaryKey = 'art_id';
+
     const CREATED_AT = 'art_created_at';
     const UPDATED_AT = 'art_updated_at';
     const DELETED_AT = 'art_deleted_at';
     
-    use HasFactory;
+    protected $fillable = [
+        'art_category_id',
+        'art_title',
+        'art_slug',
+        'art_image',
+        'art_excerpt',
+        'art_content'
+    ];
 
-    protected $guarded = ['art_id'];
 
-    public function Category(){ //method baru untuk terhubung dengan category, nama method sama dengan nama model nya
-       return $this->belongsTo(Category::class); //satu postingan memiliki satu ketegori
-    } //mengembalikan relasi model post terhadap model category
 }

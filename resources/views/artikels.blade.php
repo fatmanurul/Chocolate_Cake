@@ -10,7 +10,7 @@
     <div class="col-12">
         <div class="card" style="height: 950px; width: 800px">
           <div class="position-absolute px-3 py-2" style="background-color: rgba(0, 0, 0,0.7)">
-         <a href="#" class="text-white text-decoration-none">Brownies</a></div>
+         <a href="#" class="text-white text-decoration-none">{{$articles->ctg_name}}</a></div>
                  <img src="{{$articles->art_image}}" style="height: 780px; width: 800px" class="card-img-top" alt="...">
 
                  <div class="card-body">

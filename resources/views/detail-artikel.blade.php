@@ -7,7 +7,7 @@
   <div class="row mt-4">
   <b><a href="/" class="bi bi-arrow-left" style="color:black; item-weigth:bold;">Home</a></b>
     <h1 style="text-align:center; "><b>{{$articles->art_title}}</b></h1>
-    <p>Kategori <a href="/categories/{{$articles->Category->ctg_id}}">{{$articles->Category->ctg_name}}</a></p>
+    <p>Kategori : <a href="/kategori/{{$articles->ctg_id}}" class="text-black text-decoration-none">{{$articles->ctg_name}}</a></p>
         <center>
             <hr>
         <img src="{{$articles->art_image}}" style="height: 400px; width:400px; mb-4" class="card-img-top" alt="...">

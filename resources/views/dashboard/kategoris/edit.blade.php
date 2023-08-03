@@ -7,13 +7,14 @@ Halaman Ubah Kategori
         <h1 class="h2">Ubah Kategori</h1>
       </div>
 <div class="col-lg-8">
-<form method="post" action="/categories" class="mb-5" enctype="multipart/form-data">
+<form method="post" action="/categories/{{$category->ctg_id}}" class="mb-5">
+  @method('put')
     @csrf
   <div class="mb-3">
-    <label for="kategori" class="form-label">Nama Kategori</label>
-    <input type="text" class="form-control @error ('kategori') is-invalid @enderror" id="kategori" name="kategori" required autofocus value="{{old('kategori')}}">
+    <label for="category" class="form-label">Nama Kategori</label>
+    <input type="text" class="form-control @error ('ctg_name') is-invalid @enderror" id="ctg_name" name="ctg_name" required autofocus value="{{old('ctg_name', $category->ctg_name)}}">
     <!-- pesan error -->
-    @error('kategori')
+    @error('ctg_name')
     <div class="invalid-feedback">
         inputan harus diisi
     </div>
