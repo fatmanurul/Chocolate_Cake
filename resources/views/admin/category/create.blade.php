@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.layouts.main')
 @section('title')
 Halaman Tambah Kategori
 @endsection

@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.layouts.main')
 @section('title')
 Halaman Daftar Kategori
 @endsection
@@ -11,7 +11,7 @@ Halaman Daftar Kategori
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Komen artikel</th>
+              <th scope="col">Id artikel</th>
               <th scope="col">Nama</th>
               <th scope="col">Email</th>
               <th scope="col">komentar</th>
@@ -20,8 +20,8 @@ Halaman Daftar Kategori
           <tbody>
           @foreach ($comments as $comment)
             <tr>
-              <td>{{$loop->iteration}}</td>
-              <td>{{$comment->art_title}}</td>
+              <td>{{$comment->cmn_id}}</td>
+              <td>{{$comment->cmn_articles_id}}</td>
               <td>{{$comment->cmn_name}}</td>
               <td>{{$comment->cmn_email}}</td>
               <td>{{$comment->cmn_comment}}</td>

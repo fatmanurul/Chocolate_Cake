@@ -1,7 +1,7 @@
  <!-- Boostrap Icons -->
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
  <!-- cara menyambungkan dengan class induk/ main -->
-    @extends('dashboard.layouts.main')
+    @extends('admin.layouts.main')
     @section('title')
     Halaman Detail Artikel
     @endsection
@@ -42,16 +42,13 @@
                 <td><small>{{$artikel->art_content}}</small></td>
             </tr>
         </table>
-                <a style="color: white;" href="/articles" class="btn btn-secondary">kembali</a>
+                <a style="color: white;" href="/articles/{{$artikel->art_slug}}/edit" class="btn btn-secondary">kembali</a>
                 <a style="color: white;" href="/articles/judul-artikel/edit" class="btn btn-warning"><span data-feather="edit"></span>ubah</a>
 	</div>
 </div>
  </div>
  </div>
   
-@endsection
-@section('komentar')
-@include('partials.komentar')
 @endsection
 
 

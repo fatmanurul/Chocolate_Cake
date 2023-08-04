@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.layouts.main')
 @section('title')
 Halaman Daftar Kategori
 @endsection
@@ -18,7 +18,7 @@ Halaman Daftar Kategori
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">Id</th>
               <th scope="col">Nama Kategori</th>
               <th scope="col">Aksi</th>
             </tr>
@@ -26,8 +26,7 @@ Halaman Daftar Kategori
           <tbody>
             <tr>
             @foreach ($category as $category)
-            <!-- loop iteration mulai dari 1 -->
-              <td>{{$loop->iteration}}</td>
+              <td>{{$category->ctg_id}}</td>
               <td>{{$category->ctg_name}}</td>
               <td>
               <div class="row"> 

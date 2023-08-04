@@ -4,10 +4,12 @@ use App\Models\Artikel;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\VisitorArticleController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\DashboardArticleController;
-use App\Http\Controllers\DashboardCategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,29 +22,28 @@ use App\Http\Controllers\DashboardCategoryController;
 |
 */
 
-// route dashboard
-Route::get('/dashboard',function(){
-    return view('dashboard.index'); 
-})->middleware('auth');
-
 // route halaman awal
-Route::get('/', [ArticleController::class,'index']);
-Route::get('/detail/{slug}', [ArticleController::class,'show']);
-Route::get('/kategori/{id}', [ArticleController::class, 'category']);
+Route::get('/', [VisitorArticleController::class,'index']);
+Route::get('/detail/{slug}', [VisitorArticleController::class,'show']);
+Route::get('/kategori/{id}', [VisitorArticleController::class, 'category']);
 
 //route auth
-Route::get('/login', [LoginController::class ,'index']);
+Route::get('/login', [LoginController::class ,'index'])->name('login');
 Route::post('/login', [LoginController::class ,'authenticate']);
 Route::post('/logout', [LoginController::class ,'logout']);
 
-// route cms kategori
-Route::resource('/categories', DashboardCategoryController::class);
+// route dashboard
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
 
-// route cms comment
-Route::get('/comments', [CommentController::class,'komentars']);
+// route cms kategori
+Route::resource('/categories', CategoryController::class)->middleware('auth');
 
 // route cms artikel
-Route::resource('/articles',DashboardArticleController::class);
+Route::resource('/articles',ArticleController::class)->middleware('auth');
+
+// route cms comment
+Route::get('/comments', [CommentController::class,'index'])->middleware('auth');
+Route::post('/detail/{slug}',[CommentController::class,'store']);
 
 
 

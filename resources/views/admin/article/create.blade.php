@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.layouts.main')
 @section('title')
 Halaman Tambah Artikel
 @endsection
@@ -19,7 +19,7 @@ Halaman Tambah Artikel
     @csrf
   <div class="mb-3">
     <label for="art_title" class="form-label">Judul Artikel</label>
-    <input type="text" class="form-control @error ('art_title') is-invalid @enderror" id="art_title" name="art_title" required autofocus value="{{old('art_title')}}">
+    <input type="text" class="form-control @error ('art_title') is-invalid @enderror" id="art_title" name="art_title" autofocus value="{{old('art_title')}}">
     <!-- pesan error -->
     @error('art_title')
     <div class="invalid-feedback">
@@ -37,7 +37,7 @@ Halaman Tambah Artikel
   </div>
   <div class="mb-3">
     <label for="art_excerpt" class="form-label">Kutipan</label>
-    <input type="text" class="form-control @error ('art_excerpt') is-invalid @enderror" id="art_excerpt" name="art_excerpt" required autofocus value="{{old('art_excerpt')}}">
+    <input type="text" class="form-control @error ('art_excerpt') is-invalid @enderror" id="art_excerpt" name="art_excerpt"  autofocus value="{{old('art_excerpt')}}">
     <!-- pesan error -->
     @error('art_excerpt')
     <div class="invalid-feedback">
@@ -57,7 +57,13 @@ Halaman Tambah Artikel
 </div>
   <div class="mb-3">
   <label for="art_content" class="form-label">Isi artikel</label>
-  <textarea class="form-control" id="art_content" name="art_content" rows="3"></textarea>
+  <textarea class="form-control @error ('art_content') is-invalid @enderror" id="art_content" name="art_content"  autofocus value="{{old('art_content')}}" rows="3"></textarea>
+   <!-- pesan error -->
+   @error('art_content')
+    <div class="invalid-feedback">
+       Silahkan isi kolom ini!
+    </div>
+    @enderror
   </div>
   <a href="/articles" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>
@@ -66,7 +72,7 @@ Halaman Tambah Artikel
 <script>
   function previewImage(){
  // menangkap variabel image dan mengambil inputan image
- const image = document.querySelector('#image');
+ const art_image = document.querySelector('#art_image');
   // ambil tag image kosong
   const imgPreview = document.querySelector('.img-preview')
 
@@ -75,7 +81,7 @@ Halaman Tambah Artikel
 
   // perintah untuk mengambil data gambar
   const oFReader = new FileReader();
-  oFReader.readAsDataUrl(image.files[0]);
+  oFReader.readAsDataUrl(art_image.files[0]);
 
   oFReader.onload = function(oFREvent){
     imgPreview.src = oFREvent.target.result;

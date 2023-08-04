@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration
             $table->string('art_image');
             $table->text('art_excerpt');
             $table->text('art_content');
+            // $table->boolean('art_status');
             $table->foreign('art_category_id')->references('ctg_id')->on('categories')->onDelete('cascade');
             $table->unsignedBigInteger('art_created_by')->nullable();
             $table->unsignedBigInteger('art_updated_by')->nullable();

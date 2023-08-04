@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
-class DashboardCategoryController extends Controller
+class CategoryController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('dashboard.category.index',[
+        return view('admin.category.index',[
             'category' => Category::all()
           ]);
     }
@@ -26,7 +26,7 @@ class DashboardCategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.category.create');
+        return view('admin.category.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class DashboardCategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'ctg_name' => 'required|max:255|unique:categories'
+            'ctg_name' => 'required|max:255|unique:categories'     
         ]);
 
         // insert data ke database
@@ -66,7 +66,7 @@ class DashboardCategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('dashboard.category.edit',[
+        return view('admin.category.edit',[
             'category' => $category
         ]);
     }

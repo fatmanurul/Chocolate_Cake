@@ -30,7 +30,7 @@ footer .credit a {
   </head>
   <body>
 <!-- kasih tau ada navbar -->
-@include('partials.navbar')
+@include('visitor.layouts.navbar')
     <!-- Agar tulisan berada di dalam container -->
     <div class="container mt-4">
         <!-- memberitahu halaman child -->

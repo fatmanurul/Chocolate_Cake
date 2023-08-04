@@ -9,7 +9,11 @@ class Comment extends Model
 {
     use HasFactory;
     protected $table = 'comments';
-    protected $primaryKey = 'ctg_id';
+    protected $primaryKey = 'cmn_id';
+
+    const CREATED_AT = 'cmn_created_at';
+    const UPDATED_AT = 'cmn_updated_at';
+    const DELETED_AT = 'cmn_deleted_at';
 
     protected $guarded = ['cmn_id'];
 
