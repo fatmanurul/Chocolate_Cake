@@ -24,11 +24,7 @@ class CommentController extends Controller
    
     public function store(Request $request, $slug)
     {
-        $findArticle = Article::join('articles','articles.art_id', 'comments.cmn_articles_id')
-                                ->where('art_slug', $slug)
-                                ->get();
-                                dd($findArticle);
-        $requests = $request->input();
+
         $messages = [
             'required' => 'kolom wajib diisi'
         ];
@@ -39,16 +35,17 @@ class CommentController extends Controller
             'cmn_email' => 'required|email',
         ], $messages);
 
+        $findArticle = Article::where('art_slug', $slug)->first();
         
         $comments = new Comment;
-        
-        $comments-> cmn_articles_id = $request->art_id;
+        //  dd($findArticle);
+        $comments-> cmn_articles_id = $findArticle->art_id; 
         $comments-> cmn_name = $request->cmn_name;
         $comments-> cmn_email = $request->cmn_email;
         $comments-> cmn_comment = $request->cmn_comment;
 
         $comments->save();
 
-        return redirect();
+        return redirect("/detail/$slug")->with('success', 'Artikel berhasil di ubah');
     }
 }

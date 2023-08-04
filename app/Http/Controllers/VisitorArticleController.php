@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article; //tambahkan nama model
 use App\Models\Category;
+use App\Models\Comment;
 
 
 class VisitorArticleController extends Controller
@@ -24,11 +25,27 @@ class VisitorArticleController extends Controller
                                    ->where('articles.art_slug', $slug)
                                    ->get();
            $category = Category::all();
-           return view ('visitor.detail-artikel',[
-               'articles' => $detail_article,
-               'category' => $category
-           ]);
+
+           $comments = Article::join('comments','articles.art_id', 'comments.cmn_articles_id')
+                              ->where('articles.art_slug', $slug)
+                              ->get();
+
+         $jml_komen = Article::join('comments','articles.art_id', 'comments.cmn_articles_id')
+                              ->where('articles.art_slug', $slug)
+                              ->count();
+
+        //    dd($comments);
+                        return view ('visitor.detail-artikel',[
+                            'articles' => $detail_article,
+                            'category' => $category,
+                            'comments' => $comments,
+                            'jml_komen' => $jml_komen
+                        ]);
+                       
+
        }
+
+
    
     public function category($id){
        $articles = Article::join('categories','categories.ctg_id', 'articles.art_category_id')

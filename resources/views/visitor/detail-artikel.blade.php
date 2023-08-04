@@ -23,6 +23,17 @@
 @endsection
 
 @section('komentar')
+<h3>Komentar {{$jml_komen}}</h3>
+<hr style="width: 30rem;">
+@foreach($comments as $comments)
+<div class="card" style="width: 30rem; margin-top:10px;">
+  <div class="card-body">
+    <h5 class="card-title"> {{$comments->cmn_name}}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{$comments->cmn_created_at}}</h6>
+    <p class="card-text">{{$comments->cmn_comment}}</p>
+  </div>
+</div>
+ @endforeach    
 <form method="post" action="/detail/{{ $articles->art_slug }}" class="mb-5">
             @csrf
         <div class="col-9">
@@ -64,7 +75,7 @@
                  <button type="submit" class="btn btn-primary">Kirim</button>
             </div>
         </div>
-</form>  
+</form> 
 @endsection
 
 
