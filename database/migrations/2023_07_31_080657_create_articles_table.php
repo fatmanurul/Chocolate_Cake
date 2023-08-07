@@ -16,17 +16,17 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('art_id');
             $table->unsignedBigInteger('art_category_id');
-            $table->string('art_title');
-            $table->string('art_slug');
+            $table->string('art_title')->unique();
+            $table->string('art_slug')->unique();
             $table->string('art_image');
-            $table->text('art_excerpt');
+            $table->string('art_excerpt', 100);
             $table->text('art_content');
-            // $table->boolean('art_status');
+            $table->boolean('art_status')->default(1); //1 untuk tampil
             $table->foreign('art_category_id')->references('ctg_id')->on('categories')->onDelete('cascade');
-            $table->unsignedBigInteger('art_created_by')->nullable();
+            $table->unsignedBigInteger('art_created_by');
             $table->unsignedBigInteger('art_updated_by')->nullable();
             $table->unsignedBigInteger('art_deleted_by')->nullable();
-            $table->timestamp('art_created_at')->nullable();
+            $table->timestamp('art_created_at');
             $table->timestamp('art_updated_at')->nullable();
             $table->timestamp('art_deleted_at')->nullable();
         });

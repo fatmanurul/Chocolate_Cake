@@ -7,7 +7,7 @@ Halaman Ubah Artikel
         <h1 class="h2">Ubah Artikel</h1>
       </div>
 <div class="col-lg-8">
-<form method="post" action="/articles/{{$article->art_slug}}" class="mb-5" enctype="multipart/form-data">
+<form method="post" action="/admin/articles/{{$article->art_slug}}" class="mb-5" enctype="multipart/form-data">
   @method('put')
     @csrf
   <div class="mb-3">
@@ -51,7 +51,7 @@ Halaman Ubah Artikel
     </div>
     
     <img class="img-preview img-fluid mb-3 col-sm-5">
-    <input class="form-control  @error ('art_image') is-invalid @enderror" value="{{old('art_image', $article->art_image)}}" type="file" id="art_image" name="art_image" onchange="previewart_image()">
+    <input class="form-control  @error ('art_image') is-invalid @enderror" value="gararetek44.png" type="file" id="art_image" name="art_image" onchange="previewart_image()">
     @error('art_image')
       <div class="invalid-feedback">
           {{ $message }}
@@ -62,9 +62,9 @@ Halaman Ubah Artikel
 
 <div class="mb-3">
   <label for="art_content" class="form-floating">Isi artikel</label>
-  <textarea class="form-control" id="art_content" name="art_content" required autofocus>{{old('art_content', $article->art_content)}}</textarea>
+  <textarea rows="5" class="form-control" id="art_content" name="art_content" required autofocus>{{old('art_content', $article->art_content)}}</textarea>
   </div>
-  <a href="/articles" class="btn btn-secondary">Batal</a>
+  <a href="/admin/articles" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
 </div>
@@ -86,5 +86,21 @@ Halaman Ubah Artikel
     imgPreview.src = oFREvent.target.result;
   }
   }
+</script>
+<script>
+    // Get a reference to our file input
+    const fileInput = document.querySelector('input[type="file"]');
+    var str = "{{$article->art_image}}";
+    var res =  str.substring(21);
+    // Create a new File object
+    const myFile = new File(['file_image'], res, {
+        type: 'text/plain',
+        lastModified: new Date(),
+    });
+
+    // Now let's create a DataTransfer to get a FileList
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(myFile);
+    fileInput.files = dataTransfer.files;
 </script>
 @endsection 

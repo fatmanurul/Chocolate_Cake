@@ -24,8 +24,12 @@ use App\Http\Controllers\CommentController;
 
 // route halaman awal
 Route::get('/', [VisitorArticleController::class,'index']);
-Route::get('/detail/{slug}', [VisitorArticleController::class,'show']);
-Route::get('/kategori/{id}', [VisitorArticleController::class, 'category']);
+Route::get('/articles/{slug}', [VisitorArticleController::class,'show']);
+Route::get('/categories/{id}', [VisitorArticleController::class, 'category']);
+
+// route cms comment
+Route::get('/admin/comments', [CommentController::class,'index'])->middleware('auth');
+Route::post('/detail/{slug}',[CommentController::class,'store']);
 
 //route auth
 Route::get('/login', [LoginController::class ,'index'])->name('login');
@@ -33,17 +37,18 @@ Route::post('/login', [LoginController::class ,'authenticate']);
 Route::post('/logout', [LoginController::class ,'logout']);
 
 // route dashboard
-Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
+Route::get('/admin/dashboard',[DashboardController::class,'index'])->middleware('auth');
 
 // route cms kategori
-Route::resource('/categories', CategoryController::class)->middleware('auth');
+Route::resource('/admin/categories', CategoryController::class)->middleware('auth');
+Route::get('/admin/categories/{id}/switch', [CategoryController::class,'switch']);
 
 // route cms artikel
-Route::resource('/articles',ArticleController::class)->middleware('auth');
+Route::resource('/admin/articles',ArticleController::class)->middleware('auth');
+Route::get('/admin/articles/{id}/switch', [ArticleController::class,'switch']);
 
-// route cms comment
-Route::get('/comments', [CommentController::class,'index'])->middleware('auth');
-Route::post('/detail/{slug}',[CommentController::class,'store']);
+
+
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -37,14 +38,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $message = [
+            'unique' => 'Nama sudah dipakai!',
+            'required' => 'Silahkan isi kolom ini'
+        ];
         $validatedData = $request->validate([
             'ctg_name' => 'required|max:255|unique:categories'     
-        ]);
+        ],$message
+    );
 
+        $validatedData['ctg_created_by'] = auth()->user()->usr_id;
         // insert data ke database
         Category::create($validatedData);
 
-        return redirect('/categories')->with('success', 'Kategori baru telah ditambahkan!');
+        return redirect('/admin/categories')->with('success', 'Kategori baru telah ditambahkan!');
     }
 
     /**
@@ -80,14 +87,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $message = [
+            'unique' => 'Nama sudah dipakai!',
+            'required' => 'Silahkan isi kolom ini'
+        ];
         $validatedData = $request->validate([
-            'ctg_name' => 'required|max:255 '
-        ]);
+            'ctg_name' => 'required|max:255|unique:categories'     
+        ],$message
+    );
+
+         $validatedData['ctg_updated_by'] = auth()->user()->usr_id;
 
         Category::where('ctg_id', $category->ctg_id)
                 ->update($validatedData);
 
-        return redirect('/categories')->with('success', 'Kategori telah diperbarui!');
+        return redirect('/admin/categories')->with('success', 'Kategori telah diperbarui!');
     }
 
     /**
@@ -99,5 +113,20 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+
+    public function switch($id)
+    {
+        $status = Category::where('ctg_id', $id)->first(); //memilih data dari ctg_status lalu di ambil data yang pertama di temukan 
+    //   dd($status);
+        if($status->ctg_status == 1){ //mengecek status
+           $status->ctg_status = 0;  //merubah data yang awalnya aktif jadi nonaktif
+           $status->save();
+        return redirect('/admin/categories')->with('success', 'Kategori telah di nonaktifkan!');
+        }else{
+            $status->ctg_status = 1;
+            $status->save();
+            return redirect('/admin/categories')->with('success', 'kategori telah diaktifkan!');  
+        }
     }
 }

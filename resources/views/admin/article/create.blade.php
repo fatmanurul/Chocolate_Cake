@@ -15,7 +15,7 @@ Halaman Tambah Artikel
   </div>  
 
 <div class="col-lg-8">
-<form method="post" action="/articles" class="mb-5" enctype="multipart/form-data">
+<form method="post" action="/admin/articles" class="mb-5" enctype="multipart/form-data">
     @csrf
   <div class="mb-3">
     <label for="art_title" class="form-label">Judul Artikel</label>
@@ -65,7 +65,7 @@ Halaman Tambah Artikel
     </div>
     @enderror
   </div>
-  <a href="/articles" class="btn btn-secondary">Batal</a>
+  <a href="/admin/articles" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
 </div>

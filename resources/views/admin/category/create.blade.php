@@ -7,7 +7,7 @@ Halaman Tambah Kategori
         <h1 class="h2">Tambah Kategori Baru</h1>
       </div>
 <div class="col-lg-8">
-<form method="post" action="/categories" class="mb-5" enctype="multipart/form-data">
+<form method="post" action="/admin/categories" class="mb-5" enctype="multipart/form-data">
     @csrf
   <div class="mb-3">
     <label for="ctg_name" class="form-label">Nama Kategori</label>
@@ -15,11 +15,11 @@ Halaman Tambah Kategori
     <!-- pesan error -->
     @error('ctg_name')
     <div class="invalid-feedback">
-        Silahkan isi kolom ini!
+       {{ $message }}
     </div>
     @enderror
   </div>
-  <a href="/categories" class="btn btn-secondary">Batal</a>
+  <a href="/admin/categories" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
 </div>

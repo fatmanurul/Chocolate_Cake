@@ -7,7 +7,7 @@ Halaman Ubah Kategori
         <h1 class="h2">Ubah Kategori</h1>
       </div>
 <div class="col-lg-8">
-<form method="post" action="/categories/{{$category->ctg_id}}" class="mb-5">
+<form method="post" action="/admin/categories/{{$category->ctg_id}}" class="mb-5">
   @method('put')
     @csrf
   <div class="mb-3">
@@ -16,11 +16,11 @@ Halaman Ubah Kategori
     <!-- pesan error -->
     @error('ctg_name')
     <div class="invalid-feedback">
-        inputan harus diisi
+       {{ $message }}
     </div>
     @enderror
   </div>
-  <a href="/categories" class="btn btn-secondary">Batal</a>
+  <a href="/admin" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>  
 </form>
 </div>

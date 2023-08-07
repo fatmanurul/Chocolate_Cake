@@ -74,9 +74,11 @@ class ArticleController extends Controller
             $article->art_image = $files_name;
         }
 
+        $article['art_created_by'] = auth()->user()->usr_id;
+
         $article->save();
 
-        return redirect('/articles')->with('success', 'Artikel baru telah ditambahkan!');
+        return redirect('/admin/articles')->with('success', 'Artikel baru telah ditambahkan!');
     }
 
     /**
@@ -126,17 +128,19 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $articles)
     {
+        // dd($request->file('art_image')->getClientOriginalName());
 
         $article = $request->validate([
             'art_title' => 'required|max:255 '
         ]);
 
         $update = Article::where('art_slug', $articles)->first();
-
+        $image = substr($update->art_image, 21);
+       echo $request->art_image;
         $update->art_category_id = $request->ctg_id;
         $update->art_title = $request->art_title;
         $update->art_slug =  Str::slug($request->art_title);
-        if($request->image == null ){} else{
+        if($request->file('art_image')->getClientOriginalName() == $image ){} else{
             if ($request->hasFile('art_image')) {
                 $files = $request->file('art_image');
                 $path = public_path('images/article-image');
@@ -144,15 +148,15 @@ class ArticleController extends Controller
                 $files->move($path, $files_name);
                 $update->art_image = $files_name;
             }
-
-
         }
         $update->art_excerpt = $request->art_excerpt;
         $update->art_content = $request->art_content;
 
-        $update->save();
+        $update['art_updated_by'] = auth()->user()->usr_id;
+       
+        $update->update();
 
-        return redirect('/articles')->with('success', 'Artikel berhasil di ubah');
+        return redirect('/admin/articles')->with('success', 'Artikel berhasil di ubah');
     }
 
     /**
@@ -164,5 +168,20 @@ class ArticleController extends Controller
     public function destroy(Article $rtaicle)
     {
         //
+    }
+
+    public function switch($id)
+    {
+        $status = Article::where('art_id', $id)->first(); //memilih data dari ctg_status lalu di ambil data yang pertama di temukan 
+    //   dd($status);
+        if($status->art_status == 1){ //mengecek status
+           $status->art_status = 0;  //merubah data yang awalnya aktif jadi nonaktif
+           $status->save();
+        return redirect('/admin/articles')->with('success', 'Artikel telah dinonaktifkan!');
+        }else{
+            $status->art_status = 1;
+            $status->save();
+            return redirect('/admin/articles')->with('success', 'Artikel berhhasil diaktifkan!');  
+        }
     }
 }

@@ -9,7 +9,7 @@ Chocolate Cake</p></h2></a>
     <div class="right navbar-right" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item ">
-          <a href="/" class="nav-link"><h5><p style = "font-family:Garamond;">Home</h5></p></a>
+          <a href="/" class="nav-link"><h5><p style = "font-family:Garamond;">Beranda</h5></p></a>
         </li>
       </ul>
     </div>

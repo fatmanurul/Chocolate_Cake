@@ -16,14 +16,14 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('ctg_id');
             $table->string('ctg_name')->unique();
-            // $table->boolean('ctg_status');
-            $table->unsignedBigInteger('ctg_created_by')->nullable();
+            $table->boolean('ctg_status')->default(1);
+            $table->unsignedBigInteger('ctg_created_by');
             $table->unsignedBigInteger('ctg_updated_by')->nullable();
             $table->unsignedBigInteger('ctg_deleted_by')->nullable();
             $table->foreign('ctg_created_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('ctg_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('ctg_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
-            $table->timestamp('ctg_created_at')->nullable();
+            $table->timestamp('ctg_created_at');
             $table->timestamp('ctg_updated_at')->nullable();
             $table->timestamp('ctg_deleted_at')->nullable();
         });

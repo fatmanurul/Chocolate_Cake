@@ -8,14 +8,13 @@ use App\Models\Article;
 
 class CommentController extends Controller
 {
-    public function index()
+    public function index(Comment $comment)
     {
         $comments = Comment::join('articles','articles.art_id', 'comments.cmn_articles_id')
-                        ->get();
-        $article = Article::all();
+                            ->get();
+                            // dd($comments);
         return view('admin.comments.index',[
         'comments' => $comments,
-        'Article' => $article
         ]);
 
     }
@@ -26,7 +25,7 @@ class CommentController extends Controller
     {
 
         $messages = [
-            'required' => 'kolom wajib diisi'
+            'required' => 'Silahkan isi kolom ini!'
         ];
 
         $request->validate([

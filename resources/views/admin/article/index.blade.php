@@ -16,11 +16,11 @@ Halaman Dashboard
       @endif
   </div>  
       <div class="table-responsive  col-lg-8">
-      <a href="/articles/create" class="btn btn-primary mb-3">Tambah artikel baru</a>
+      <a href="/admin/articles/create" class="btn btn-primary mb-3">Tambah artikel baru</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">Id</th>
+              <th scope="col">No</th>
               <th scope="col">Judul</th>
               <th scope="col">Kategori</th>
               <th scope="col">Action</th>
@@ -29,21 +29,25 @@ Halaman Dashboard
           <tbody>
             @foreach ($artikel as $artikel)
             <tr>
-              <td>{{$artikel->art_id}}</td> 
+              <td>{{$loop->iteration}}</td> 
               <td>{{$artikel->art_title}}</td>
               <td>{{$artikel->ctg_name}}</td>
               <td><div class="row"> 
-                    <div class="col-2">
-                          <a href="/articles/{{ $artikel->art_id }}" class="badge bg-info"><span data-feather="eye"></span></a>
+                    <div class="col-3">
+                          <a href="/admin/articles/{{ $artikel->art_id }}" class="badge bg-info"><span data-feather="eye"></span></a>
                     </div>    
-                    <div class="col-2">
-                          <a href="/articles/{{ $artikel->art_slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a> 
+                    <div class="col-3">
+                          <a href="/admin/articles/{{ $artikel->art_slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a> 
                     </div>
-                  <div class="col-2">
-                    <div class="form-check form-switch ">
-                          <input class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                    </div>
-                  </div>
+                    <div class="col-3">
+                        <div class="form-check form-switch col-2">
+                        @if($artikel->art_status == 1)
+                        <input onclick="location.href='/admin/articles/{{$artikel->art_id}}/switch'" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                        @else
+                        <input onclick="location.href='/admin/articles/{{$artikel->art_id}}/switch'" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        @endif
+                      </div>
+                     </div>
                </div></td>
             </tr>
             @endforeach

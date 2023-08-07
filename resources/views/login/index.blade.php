@@ -33,8 +33,8 @@
           <form action="/login" method="post"> 
             @csrf      
             <div class="form-floating">
-              <input type="email" name="usr_email" class="form-control @error('usr_email') is-invalid @enderror" id="usr_email" placeholder="name@example.com" autofocus required value="{{old('usr_email')}}">
-              <label for="usr_email">Alamat Email</label>
+              <input type="email" name="usr_email" class="form-control @error('usr_email') is-invalid @enderror" id="usr_email" autofocus required value="{{old('usr_email')}}">
+              <label for="usr_email">Email</label>
               @error('usr_email')
               <div class="invalid-feedback">
                 email tidak valid

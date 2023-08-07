@@ -20,7 +20,7 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
        $credentials = $request->validate([
-        'usr_email' => 'required|email',
+        'usr_email' => 'required|email:dns',
         'usr_password' => 'required'
        ]);
 
@@ -31,7 +31,7 @@ class LoginController extends Controller
       
        if(Auth::attempt($attempt)) {
         $request->session()->regenerate();
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/admin/dashboard');
        }
 
 

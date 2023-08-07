@@ -10,10 +10,10 @@
     <p>Kategori : <a href="/kategori/{{$articles->ctg_id}}" class="text-black text-decoration-none">{{$articles->ctg_name}}</a></p>
         <center>
             <hr>
-        <img src="{{$articles->art_image}}" style="height: 400px; width:400px; mb-4" class="card-img-top" alt="...">
+            <img src="{{asset($articles->art_image)}}" style="height: 400px; width:400px; mb-4" class="card-img-top" alt="...">
         </center>
 
-     <div>
+     <div style="margin-top:50px;">
          {{ $articles->art_content }}
     </div>
 </div>
@@ -42,32 +42,32 @@
             </p></b></h5>
             <small style="line-height:5px"></small>
             <div class="form-floating mb-3">
-                <textarea class="form-control @error('cmn_comment') is-invalid @enderror" id="cmn_comment" name="cmn_comment" style="height: 100px" required></textarea>
+                <textarea class="form-control @error('cmn_comment') is-invalid @enderror" id="cmn_comment" name="cmn_comment" style="height: 100px" ></textarea>
                 <label for="floatingTextarea2">Komentar</label>
                 <!-- pesan error -->
                     @error('cmn_comment')
                         <div class="invalid-feedback">
-                        Silahkan isi kolom ini!
+                        {{ $message }}
                         </div>
                      @enderror
             </div>
             <div class="form-floating mb-3">
-                <input type="name" class="form-control @error ('cmn_name') is-invalid @enderror" id="cmn_name" name="cmn_name" required>
+                <input type="name" class="form-control @error ('cmn_name') is-invalid @enderror" id="cmn_name" name="cmn_name" >
                 <label for="floatingInput">Nama</label>
                     <!-- pesan error -->
                     @error('cmn_name')
                             <div class="invalid-feedback">
-                            Silahkan isi kolom ini!
+                            {{ $message }}
                             </div>
                     @enderror
             </div>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control  @error ('cmn_email') is-invalid @enderror" id="cmn_email" name="cmn_email" required>
+                <input type="email" class="form-control  @error ('cmn_email') is-invalid @enderror" id="cmn_email" name="cmn_email" >
                 <label for="floatingInput">Email</label>
                  <!-- pesan error -->
                     @error('cmn_email')
                             <div class="invalid-feedback">
-                            Silahkan isi kolom ini!
+                            {{ $message }}
                             </div>
                         @enderror
             </div>

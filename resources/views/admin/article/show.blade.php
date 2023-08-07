@@ -42,8 +42,8 @@
                 <td><small>{{$artikel->art_content}}</small></td>
             </tr>
         </table>
-                <a style="color: white;" href="/articles/{{$artikel->art_slug}}/edit" class="btn btn-secondary">kembali</a>
-                <a style="color: white;" href="/articles/judul-artikel/edit" class="btn btn-warning"><span data-feather="edit"></span>ubah</a>
+                <a style="color: white;" href="/admin/articles" class="btn btn-secondary">kembali</a>
+                <a style="color: white;" href="/admin/articles/{{ $artikel->art_slug }}/edit" class="btn btn-warning"><span data-feather="edit"></span>ubah</a>
 	</div>
 </div>
  </div>

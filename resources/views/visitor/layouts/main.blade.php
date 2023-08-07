@@ -47,7 +47,9 @@ footer .credit a {
               <select onChange="document.location.href=this.options[this.selectedIndex].value;" class="form-select">
               <option value="0" selected>Pilih Kategori</option>
               @foreach ($category as $category)
-              <option value="/kategori/{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
+              @if($category->ctg_status == 1)
+              <option value="/categories/{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
+              @endif
               @endforeach
               <option value="/">All</option>
               </select>

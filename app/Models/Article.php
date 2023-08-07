@@ -15,14 +15,5 @@ class Article extends Model
     const UPDATED_AT = 'art_updated_at';
     const DELETED_AT = 'art_deleted_at';
     
-    protected $fillable = [
-        'art_category_id',
-        'art_title',
-        'art_slug',
-        'art_image',
-        'art_excerpt',
-        'art_content'
-    ];
-
-
+    protected $guarded = ['art_id'];
 }
