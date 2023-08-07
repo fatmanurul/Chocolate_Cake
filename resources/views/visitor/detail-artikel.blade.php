@@ -5,7 +5,7 @@
 <div class="col-9">
 @foreach($articles as $articles)
   <div class="row mt-4">
-  <b><a href="/" class="bi bi-arrow-left" style="color:black; item-weigth:bold;">Home</a></b>
+  <b><a href="/" class="bi bi-arrow-left" style="color:black; item-weigth:bold;">Beranda</a></b>
     <h1 style="text-align:center; "><b>{{$articles->art_title}}</b></h1>
     <p>Kategori : <a href="/kategori/{{$articles->ctg_id}}" class="text-black text-decoration-none">{{$articles->ctg_name}}</a></p>
         <center>
@@ -26,15 +26,17 @@
 <h3>Komentar {{$jml_komen}}</h3>
 <hr style="width: 30rem;">
 @foreach($comments as $comments)
-<div class="card" style="width: 30rem; margin-top:10px;">
-  <div class="card-body">
-    <h5 class="card-title"> {{$comments->cmn_name}}</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">{{$comments->cmn_created_at}}</h6>
-    <p class="card-text">{{$comments->cmn_comment}}</p>
-  </div>
+<div class="card" style="width: 20rem;  margin-top:10px;">
+    <div class="card-header">
+       <b>{{$comments->cmn_name}}</b> 
+        <small>{{ $comments->cmn_created_at }}</small>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{$comments->cmn_comment}}</li>
+    </ul>
 </div>
  @endforeach    
-<form method="post" action="/detail/{{ $articles->art_slug }}" class="mb-5">
+<form method="post" action="/articles/{{ $articles->art_slug }}" class="mb-5">
             @csrf
         <div class="col-9">
             <h5><b><p style = "font-family:Perpetua; color:RGB(160, 97, 36); margin-top:100px;">

@@ -53,7 +53,7 @@ class ArticleController extends Controller
         $request->validate([
             'art_title' => 'required|max:255',
             'art_excerpt' => 'required',
-            'art_image' => 'image',
+            'art_image' => 'required|image',
             'art_content' => 'required'
         ], $messages);
 

@@ -29,7 +29,7 @@ Route::get('/categories/{id}', [VisitorArticleController::class, 'category']);
 
 // route cms comment
 Route::get('/admin/comments', [CommentController::class,'index'])->middleware('auth');
-Route::post('/detail/{slug}',[CommentController::class,'store']);
+Route::post('/articles/{slug}',[CommentController::class,'store']);
 
 //route auth
 Route::get('/login', [LoginController::class ,'index'])->name('login');
