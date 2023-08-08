@@ -33,13 +33,13 @@ Halaman Dashboard
               <td>{{$artikel->art_title}}</td>
               <td>{{$artikel->ctg_name}}</td>
               <td><div class="row"> 
-                    <div class="col-3">
+                    <div class="col-2">
                           <a href="/admin/articles/{{ $artikel->art_id }}" class="badge bg-info"><span data-feather="eye"></span></a>
                     </div>    
-                    <div class="col-3">
-                          <a href="/admin/articles/{{ $artikel->art_slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a> 
+                    <div class="col-2">
+                          <a href="/admin/articles/{{ $artikel->art_id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a> 
                     </div>
-                    <div class="col-3">
+                    <div class="col-2">
                         <div class="form-check form-switch col-2">
                         @if($artikel->art_status == 1)
                         <input onclick="location.href='/admin/articles/{{$artikel->art_id}}/switch'" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>

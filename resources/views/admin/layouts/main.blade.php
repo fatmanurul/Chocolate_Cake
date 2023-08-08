@@ -10,6 +10,8 @@
     
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
+    <!-- summer -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
    
     {{-- Trix Editor --}}
     <link rel="stylesheet" type="text/css" href="/css/trix.css">
@@ -18,11 +20,12 @@
     <link href="https://cdn.jsdelivr.net/npm/trix@2.0.5/dist/trix.min.css" rel="stylesheet">
 
     <style>
-        /* menghilangkan upload image */
-      trix-toolbar [data-trix-button-group="file-tools"]{
-        display:none;
+      trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
       }
     </style>
+
+
   </head>
   <body>
     
@@ -37,6 +40,9 @@
   </div>
 </div>
 
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 

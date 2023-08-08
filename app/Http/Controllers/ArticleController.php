@@ -45,14 +45,23 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request);
         $requests = $request->input();
         $messages = [
-            'required' => 'kolom wajib diisi'
+            'required' => 'Silahkan isi kolom ini',
+            'max' => 'Tidak boleh lebih dari 100 karakter'
         ];
 
         $request->validate([
-            'art_title' => 'required|max:255',
-            'art_excerpt' => 'required',
+            'art_title' => [
+                'required',
+                'max:100',
+                Rule::unique('articles')->where(function ($query) use ($request) {
+                    return $query->where('category_id', $request->category_id);
+                }),
+            ],
+            'art_excerpt' => 'required|max:100',
             'art_image' => 'required|image',
             'art_content' => 'required'
         ], $messages);
@@ -92,7 +101,7 @@ class ArticleController extends Controller
        
         $artikel = Article::join('categories','categories.ctg_id', 'articles.art_category_id')
                              ->where('art_id',$article->art_id)
-                            ->first();
+                             ->first();
                     return view('admin.article.show',[
                     'artikel' => $artikel,
                     ]);
@@ -107,7 +116,7 @@ class ArticleController extends Controller
     public function edit($article)
     {
         $articles = Article::join('categories','categories.ctg_id', 'articles.art_category_id')
-                        ->where('art_slug', $article)
+                        ->where('art_id', $article)
                         ->first();
          $category = Category::where('ctg_id','!=', $articles->ctg_id)->get(); //dimana ctg_id sama dengan ctg_id sebelumnya maka tidak akan mucul 
                         // dd($articles);
@@ -134,7 +143,7 @@ class ArticleController extends Controller
             'art_title' => 'required|max:255 '
         ]);
 
-        $update = Article::where('art_slug', $articles)->first();
+        $update = Article::where('art_id', $articles)->first();
         $image = substr($update->art_image, 21);
        echo $request->art_image;
         $update->art_category_id = $request->ctg_id;

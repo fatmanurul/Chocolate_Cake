@@ -87,12 +87,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        // dd($category);
         $message = [
             'unique' => 'Nama sudah dipakai!',
             'required' => 'Silahkan isi kolom ini'
         ];
         $validatedData = $request->validate([
-            'ctg_name' => 'required|max:255|unique:categories'     
+            'ctg_name' => 'required|max:255|unique:categories,ctg_name,'.$category->ctg_id.',ctg_id,ctg_deleted_at,NULL'
         ],$message
     );
 

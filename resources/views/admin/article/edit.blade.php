@@ -7,7 +7,7 @@ Halaman Ubah Artikel
         <h1 class="h2">Ubah Artikel</h1>
       </div>
 <div class="col-lg-8">
-<form method="post" action="/admin/articles/{{$article->art_slug}}" class="mb-5" enctype="multipart/form-data">
+<form method="post" action="/admin/articles/{{$article->art_id}}" class="mb-5" enctype="multipart/form-data">
   @method('put')
     @csrf
   <div class="mb-3">
@@ -40,24 +40,21 @@ Halaman Ubah Artikel
     @enderror
   </div>
 
-    <div class="mb-3">
-    <label for="art_image" class="form-label">Gambar Artikel</label>
-    <div class="col-sm-4">
-      @if(isset($article->art_image))
-      <img src="{{ asset($article->art_image) }}" class="img-thumbnail" id="tampil_picture" style="object-fit: cover; height: 200px; width: 200px"/>
-      @else
-      <img src="{{ asset('images/default.jpg') }}" class="img-thumbnail" id="tampil_picture" style="object-fit: cover; height: 200px; width: 200px"/>
-      @endif
-    </div>
-    
-    <img class="img-preview img-fluid mb-3 col-sm-5">
-    <input class="form-control  @error ('art_image') is-invalid @enderror" value="gararetek44.png" type="file" id="art_image" name="art_image" onchange="previewart_image()">
-    @error('art_image')
-      <div class="invalid-feedback">
-          {{ $message }}
-      </div>
-    @enderror
-  </div>
+  <div class="mb-3">
+  <label for="art_image" class="form-label">gambar Artikel</label>
+  <input type="hidden" name="oldImage" value="{{$article->art_image}}">
+  @if($article->art_image)
+  <!-- <img src="{{ asset($article->art_image) }}" class="img-preview img-fluid mb-3 col-sm-5"> -->
+  @else
+  <img class="img-preview img-fluid mb-3 col-sm-5 d-block">
+  @endif
+  <input class="form-control @error('art_image') is-invalid @enderror" type="file" id="art_image" name="art_image" onchange="previewImage()">
+  @error('image')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
+</div>
   
 
 <div class="mb-3">

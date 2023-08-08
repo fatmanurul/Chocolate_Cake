@@ -12,7 +12,7 @@
           <div class="position-absolute px-3 py-2" style="background-color: rgba(0, 0, 0,0.7)">
          
                  <a href="#" class="text-white text-decoration-none">{{$articles->ctg_name}}</a></div>
-                 <img src="{{$articles->art_image}}" style="height: 780px; width: 800px" class="card-img-top" alt="...">
+                 <img src="{{asset($articles->art_image)}}" style="height: 780px; width: 800px" class="card-img-top" alt="...">
                  <div class="card-body">
                          <div class="card-title"><h4>{{ $articles->art_title }}</h4></div>
                          {{ $articles->art_excerpt }}

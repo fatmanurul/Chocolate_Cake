@@ -23,7 +23,7 @@ Halaman Tambah Artikel
     <!-- pesan error -->
     @error('art_title')
     <div class="invalid-feedback">
-       Silahkan isi kolom ini!
+     {{ $message }}
     </div>
     @enderror
   </div>
@@ -41,7 +41,7 @@ Halaman Tambah Artikel
     <!-- pesan error -->
     @error('art_excerpt')
     <div class="invalid-feedback">
-       Silahkan isi kolom ini!
+     {{ $message }}
     </div>
     @enderror
   </div>
@@ -55,21 +55,34 @@ Halaman Tambah Artikel
     </div>
     @enderror
 </div>
-  <div class="mb-3">
-  <label for="art_content" class="form-label">Isi artikel</label>
-  <textarea class="form-control @error ('art_content') is-invalid @enderror" id="art_content" name="art_content"  autofocus value="{{old('art_content')}}" rows="3"></textarea>
-   <!-- pesan error -->
-   @error('art_content')
-    <div class="invalid-feedback">
-       Silahkan isi kolom ini!
-    </div>
-    @enderror
-  </div>
+
+<div class="mb-3">
+        <label for="art_content" class="form-label">Isi artikel</label>
+        @error('art_content')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+        <input id="art_content" type="hidden" name="art_content" value="{{ old('art_content')}}">
+        <trix-editor input="art_content"></trix-editor>
+</div>
   <a href="/admin/articles" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
 </div>
 <script>
+$('.summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
   function previewImage(){
  // menangkap variabel image dan mengambil inputan image
  const art_image = document.querySelector('#art_image');

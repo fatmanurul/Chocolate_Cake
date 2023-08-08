@@ -29,9 +29,9 @@
 <div class="card" style="width: 20rem;  margin-top:10px;">
     <div class="card-header">
        <b>{{$comments->cmn_name}}</b> 
-        <small>{{ $comments->cmn_created_at }}</small>
     </div>
     <ul class="list-group list-group-flush">
+         <li class="list-group-item"><small>{{ $comments->cmn_created_at }}</small></li>
         <li class="list-group-item">{{$comments->cmn_comment}}</li>
     </ul>
 </div>
