@@ -64,19 +64,20 @@ class ArticleController extends Controller
         ], $messages);
 
         $check_art_title = Article::join('categories','categories.ctg_id','articles.art_category_id')
-                                    ->where('art_title', $request->art_title .$request->ctg_id)
+                                    ->where('art_title', $request->art_title)
                                     ->where('ctg_id', $request->ctg_id)
                                     ->first();
         if($check_art_title == true){
-         return redirect('/admin/articles/create')->with('error', 'Judul telah dipakai di dalam kategori!');
+         return redirect('/admin/articles/create')->with('error', 'Judul sudah dipakai di dalam kategori!');
         }
                                     // dd($check_art_title);
-
+        $title = $request->art_title.' '.$request->ctg_id;
+            // dd($title);
         $article = new Article;
         
         $article-> art_title = $request->art_title;
         $article-> art_category_id =$request->ctg_id;
-        $article-> art_slug = Str::slug($request->art_title);
+        $article-> art_slug = Str::slug($title);
         $article-> art_excerpt = $request->art_excerpt;
         $article-> art_image = $request->art_image;
         $article-> art_content = $request->art_content;
@@ -124,7 +125,10 @@ class ArticleController extends Controller
         $articles = Article::join('categories','categories.ctg_id', 'articles.art_category_id')
                         ->where('art_id', $article)
                         ->first();
-         $category = Category::where('ctg_id','!=', $articles->ctg_id)->get(); //dimana ctg_id sama dengan ctg_id sebelumnya maka tidak akan mucul 
+         $category = Category::where('ctg_id','!=', $articles->ctg_id)
+         ->where('ctg_status', 1)
+         ->get(); //dimana ctg_id sama dengan ctg_id sebelumnya maka tidak akan mucul 
+
                         // dd($articles);
         return view('admin.article.edit',[
             'article' => $articles,
@@ -151,7 +155,7 @@ class ArticleController extends Controller
 
         $update = Article::where('art_id', $articles)->first();
         $image = substr($update->art_image, 21);
-       echo $request->art_image;
+        echo $request->art_image;
         $update->art_category_id = $request->ctg_id;
         $update->art_title = $request->art_title;
         $update->art_slug =  Str::slug($request->art_title);
@@ -168,8 +172,10 @@ class ArticleController extends Controller
         $update->art_content = $request->art_content;
 
         $update['art_updated_by'] = auth()->user()->usr_id;
+
+        // dd($update->save());
        
-        $update->update();
+        $update->save();
 
         return redirect('/admin/articles')->with('success', 'Artikel berhasil di ubah');
     }

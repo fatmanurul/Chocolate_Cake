@@ -10,57 +10,62 @@ Halaman Ubah Artikel
 <form method="post" action="/admin/articles/{{$article->art_id}}" class="mb-5" enctype="multipart/form-data">
   @method('put')
     @csrf
-  <div class="mb-3">
-    <label for="art_title" class="form-label">Judul</label>
-    <input type="text" class="form-control @error ('art_title') is-invalid @enderror" id="art_title" name="art_title" required autofocus value="{{old('art_title', $article->art_title)}}">
-    <!-- pesan error -->
-    @error('judul')
-    <div class="invalid-feedback">
-       Silahkan isi kolom ini!
-    </div>
-    @enderror
-  </div>
-  <div class="mb-3">
-    <label for="category" class="form-label">Kategori</label>
-    <select class="form-select" name="ctg_id">
-      <option value="{{$article->ctg_id}}">{{$article->ctg_name}}</option>
-    @foreach ($category as $category)
-    <option value="{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
-    @endforeach
- </select>
-  </div>
-  <div class="mb-3">
-    <label for="art_excerpt" class="form-label">Kutipan</label>
-    <input type="text" class="form-control @error ('art_excerpt') is-invalid @enderror" id="art_excerpt" name="art_excerpt" required autofocus  value="{{old('art_excerpt', $article->art_excerpt)}}">
-    <!-- pesan error -->
-    @error('art_excerpt')
-    <div class="invalid-feedback">
-       Silahkan isi kolom ini!
-    </div>
-    @enderror
-  </div>
-
-  <div class="mb-3">
-  <label for="art_image" class="form-label">gambar Artikel</label>
-  <input type="hidden" name="oldImage" value="{{$article->art_image}}">
-  @if($article->art_image)
-  <!-- <img src="{{ asset($article->art_image) }}" class="img-preview img-fluid mb-3 col-sm-5"> -->
-  @else
-  <img class="img-preview img-fluid mb-3 col-sm-5 d-block">
-  @endif
-  <input class="form-control @error('art_image') is-invalid @enderror" type="file" id="art_image" name="art_image" onchange="previewImage()">
-  @error('image')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
+      <div class="mb-3">
+        <label for="art_title" class="form-label">Judul</label>
+        <input type="text" class="form-control @error ('art_title') is-invalid @enderror" id="art_title" name="art_title" required autofocus value="{{old('art_title', $article->art_title)}}">
+        <!-- pesan error -->
+        @error('judul')
+        <div class="invalid-feedback">
+          Silahkan isi kolom ini!
+        </div>
         @enderror
-</div>
-  
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Kategori</label>
+        <select class="form-select" name="ctg_id">
+          <option value="{{$article->ctg_id}}">{{$article->ctg_name}}</option>
+        @foreach ($category as $category)
+        <option value="{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
+        @endforeach
+    </select>
+      </div>
+      <div class="mb-3">
+        <label for="art_excerpt" class="form-label">Kutipan</label>
+        <input type="text" class="form-control @error ('art_excerpt') is-invalid @enderror" id="art_excerpt" name="art_excerpt" required autofocus  value="{{old('art_excerpt', $article->art_excerpt)}}">
+        <!-- pesan error -->
+        @error('art_excerpt')
+        <div class="invalid-feedback">
+          Silahkan isi kolom ini!
+        </div>
+        @enderror
+      </div>
 
-<div class="mb-3">
-  <label for="art_content" class="form-floating">Isi artikel</label>
-  <textarea rows="5" class="form-control" id="art_content" name="art_content" required autofocus>{{old('art_content', $article->art_content)}}</textarea>
-  </div>
+      <div class="mb-3">
+      <label for="art_image" class="form-label">gambar Artikel</label>
+      <input type="hidden" name="oldImage" value="{{$article->art_image}}">
+      @if($article->art_image)
+      <!-- <img src="{{ asset($article->art_image) }}" class="img-preview img-fluid mb-3 col-sm-5"> -->
+      @else
+      <img class="img-preview img-fluid mb-3 col-sm-5 d-block">
+      @endif
+      <input class="form-control @error('art_image') is-invalid @enderror" type="file" id="art_image" name="art_image" onchange="previewImage()">
+      @error('image')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+    </div>
+      
+
+    <div class="mb-3">
+        <label for="bodart_contenty" class="form-label">Isi artikel</label>
+        @error('art_content')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+        <input id="art_content" type="hidden" name="art_content" value="{{ old('art_content', $article->art_content) }}">
+        <trix-editor input="art_content"></trix-editor>
+    </div>
+    
   <a href="/admin/articles" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>

@@ -14,7 +14,7 @@
         </center>
 
      <div style="margin-top:50px;">
-         {{ $articles->art_content }}
+     {!! $articles->art_content !!}
     </div>
 </div>
 @endforeach

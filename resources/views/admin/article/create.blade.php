@@ -53,7 +53,7 @@ Halaman Tambah Artikel
     @enderror
   </div>
   <div class="mb-3">
-  <label for="art_image" class="form-label">Gambar Artikel</label>
+  <label for="art_image" class="form-label">Gambar artikel</label>
   <img class="img-preview img-fluid mb-3 col-sm-5">
   <input class="form-control  @error ('art_image') is-invalid @enderror" type="file" id="art_image" name="art_image" onchange="previewImage()">
   @error('art_image')
@@ -75,6 +75,9 @@ Halaman Tambah Artikel
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
 </div>
+
+
+
 <script>
 $('.summernote').summernote({
         placeholder: 'Hello stand alone ui',

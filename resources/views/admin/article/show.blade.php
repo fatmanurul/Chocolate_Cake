@@ -7,6 +7,11 @@
     @endsection
 <!-- memberitahu kalo ini adalah sebuah section yang bernama container -->
 @section('container')
+<style>
+  th, td {
+    vertical-align: top; /* Ini yang membuat teks di atas sel */
+  }
+</style>
 <div class="">
 <div class="card mt-4">
 	<div class="card-header">
@@ -16,28 +21,28 @@
 	<div class="card-body">
         <table cellpadding="12">
             <tr>
-                <th><small>Judul artikel</small></th>
+                <th style="vertical-align: top;"><small>Judul artikel</small></th>
                 <td><small>:</small></td>
                 <td><small>{{$artikel->art_title}}</small></td>
             </tr>
             <tr>
-                <th><small>Kategori</small></th>
+                <th style="vertical-align: top;"><small>Kategori</small></th>
                 <td><small>:</small></td>
                 <td><small>{{$artikel->ctg_name}}</small></td>
             </tr>
             <tr>
-                <th><small>Kutipan</small></th>
+                <th style="vertical-align: top;"><small>Kutipan</small></th>
                 <td><small>:</small></td>
                 <td><small>{{ $artikel->art_excerpt }}.</small></td>
             </tr>
             <tr>
-                <th><small>Gambar artikel</small></th>
+                <th style="vertical-align: top;"><small>Gambar artikel</small></th>
                 <td><small>:</small></td>
                 <!-- {{ asset('storage/'. $artikel->art_image) }} -->
                 <td><img src="{{asset($artikel->art_image)}}" style="height: 200px; width:200px;" alt="brownies"></td>
             </tr>
             <tr>
-                <th><small>Isi artikel</small></th>
+                <th style="vertical-align: top;"><small>Isi artikel</small></th>
                 <td><small>:</small></td>
                 <td><small>
                 {!! $artikel->art_content !!}

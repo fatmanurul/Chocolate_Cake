@@ -12,15 +12,15 @@ Halaman Ubah Kategori
     @csrf
   <div class="mb-3">
     <label for="category" class="form-label">Nama Kategori</label>
-    <input type="text" class="form-control @error ('ctg_name') is-invalid @enderror" id="ctg_name" name="ctg_name" required autofocus value="{{old('ctg_name', $category->ctg_name)}}">
+    <input type="text" class="form-control @error ('ctg_name') is-invalid @enderror" id="ctg_name" name="ctg_name" autofocus value="{{old('ctg_name', $category->ctg_name)}}">
     <!-- pesan error -->
     @error('ctg_name')
     <div class="invalid-feedback">
-       {{ $message }}
+   Silahkan isi kolom ini 
     </div>
     @enderror
   </div>
-  <a href="/admin" class="btn btn-secondary">Batal</a>
+  <a href="/admin/categories" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>  
 </form>
 </div>

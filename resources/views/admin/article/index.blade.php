@@ -21,7 +21,7 @@ Halaman Dashboard
           <thead>
             <tr>
               <th scope="col">No</th>
-              <th scope="col">Judul</th>
+              <th scope="col">Judul artikel</th>
               <th scope="col">Kategori</th>
               <th scope="col">Action</th>
             </tr>

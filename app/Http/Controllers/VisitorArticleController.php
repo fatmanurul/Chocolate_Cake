@@ -11,6 +11,7 @@ use App\Models\Comment;
 class VisitorArticleController extends Controller
 {
     public function index(){
+       
         $articles = Article::join('categories','categories.ctg_id', 'articles.art_category_id')
                            ->get();
         $category = Category::all();
