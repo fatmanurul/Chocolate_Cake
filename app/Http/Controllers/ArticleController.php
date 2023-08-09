@@ -33,7 +33,7 @@ class ArticleController extends Controller
     public function create()
     {
         return view('admin.article.create',[
-            'categories' => Category::all()
+            'categories' => Category::where('ctg_status', 1)->get()
         ]);
     }
 
@@ -57,14 +57,20 @@ class ArticleController extends Controller
             'art_title' => [
                 'required',
                 'max:100',
-                Rule::unique('articles')->where(function ($query) use ($request) {
-                    return $query->where('category_id', $request->category_id);
-                }),
             ],
             'art_excerpt' => 'required|max:100',
             'art_image' => 'required|image',
             'art_content' => 'required'
         ], $messages);
+
+        $check_art_title = Article::join('categories','categories.ctg_id','articles.art_category_id')
+                                    ->where('art_title', $request->art_title .$request->ctg_id)
+                                    ->where('ctg_id', $request->ctg_id)
+                                    ->first();
+        if($check_art_title == true){
+         return redirect('/admin/articles/create')->with('error', 'Judul telah dipakai di dalam kategori!');
+        }
+                                    // dd($check_art_title);
 
         $article = new Article;
         
