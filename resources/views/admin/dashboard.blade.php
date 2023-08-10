@@ -9,7 +9,7 @@ Halaman Dashboard
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
  
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Selamat Datang Admin</h1>
+        <h1 class="h2">Selamat Datang {{auth()->user()->usr_name}}</h1>
       </div>
 <div class="container">
     <div class="row g-5">

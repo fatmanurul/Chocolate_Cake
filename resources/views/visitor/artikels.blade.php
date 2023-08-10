@@ -19,7 +19,7 @@
                  </div>
 
                  <div class="card-footer">
-                         <a href="/articles/{{$articles->art_slug}}" class="btn btn-primary">Baca Selengkapnya</a>
+                         <a href="/articles/{{$articles->art_slug}}" class="btn btn-primary">Baca selengkapnya</a>
                  </div>
          </div>
      </div>

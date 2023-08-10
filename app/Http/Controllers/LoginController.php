@@ -36,7 +36,7 @@ class LoginController extends Controller
 
 
 
-      return back()->with('loginError', 'login  gagal!');
+      return back()->with('loginError', 'Login  gagal!');
     }
 
 

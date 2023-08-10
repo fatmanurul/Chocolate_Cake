@@ -14,7 +14,7 @@ Halaman Daftar Kategori
       @endif
   </div>     
       <div class="table-responsive col-lg-8">
-        <a href="/admin/categories/create" class="btn btn-primary mb-3">Tambah Kategori Baru</a>
+        <a href="/admin/categories/create" class="btn btn-primary mb-3">Tambah kategori baru</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>

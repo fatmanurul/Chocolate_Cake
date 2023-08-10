@@ -40,7 +40,7 @@ class CategoryController extends Controller
     {
         $message = [
             'unique' => 'Nama sudah dipakai!',
-            'required' => 'Silahkan isi kolom ini'
+            'required' => 'Silahkan isi kolom ini!'
         ];
         $validatedData = $request->validate([
             'ctg_name' => 'required|max:255|unique:categories'     
@@ -89,8 +89,8 @@ class CategoryController extends Controller
     {
         // dd($category);
         $message = [
-            'unique' => 'Nama sudah dipakai!',
-            'required' => 'Silahkan isi kolom ini'
+            'required' => 'Silahkan isi kolom ini!',
+            'unique' => 'Nama sudah dipakai!'
         ];
         $validatedData = $request->validate([
             'ctg_name' => 'required|max:255|unique:categories,ctg_name,'.$category->ctg_id.',ctg_id,ctg_deleted_at,NULL'
@@ -123,7 +123,7 @@ class CategoryController extends Controller
         if($status->ctg_status == 1){ //mengecek status
            $status->ctg_status = 0;  //merubah data yang awalnya aktif jadi nonaktif
            $status->save();
-        return redirect('/admin/categories')->with('success', 'Kategori telah di nonaktifkan!');
+        return redirect('/admin/categories')->with('success', 'Kategori telah dinonaktifkan!');
         }else{
             $status->ctg_status = 1;
             $status->save();

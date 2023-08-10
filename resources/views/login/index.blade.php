@@ -37,7 +37,7 @@
               <label for="usr_email">Email</label>
               @error('usr_email')
               <div class="invalid-feedback">
-                email tidak valid
+                Email tidak valid!
               </div>
               @enderror
             </div>

@@ -16,7 +16,7 @@ Halaman Ubah Kategori
     <!-- pesan error -->
     @error('ctg_name')
     <div class="invalid-feedback">
-   Silahkan isi kolom ini 
+     {{ $message }}
     </div>
     @enderror
   </div>

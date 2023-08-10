@@ -49,8 +49,8 @@ class ArticleController extends Controller
         // dd($request);
         $requests = $request->input();
         $messages = [
-            'required' => 'Silahkan isi kolom ini',
-            'max' => 'Tidak boleh lebih dari 100 karakter'
+            'required' => 'Silahkan isi kolom ini!',
+            'max' => 'Tidak boleh lebih dari 100 karakter!'
         ];
 
         $request->validate([
@@ -122,6 +122,7 @@ class ArticleController extends Controller
      */
     public function edit($article)
     {
+        // dd($article);
         $articles = Article::join('categories','categories.ctg_id', 'articles.art_category_id')
                         ->where('art_id', $article)
                         ->first();
@@ -145,20 +146,31 @@ class ArticleController extends Controller
      * @param  \App\Models\Artikel  $artikel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $articles)
+    public function update(Request $request, $article_id)//selain reques, parameter lain di dapat di url dinamis
     {
         // dd($request->file('art_image')->getClientOriginalName());
 
         $article = $request->validate([
             'art_title' => 'required|max:255 '
         ]);
+     
+        // dd($articles);
+
+        $check_art_title = Article::join('categories','categories.ctg_id','articles.art_category_id')
+        ->where('art_title', $request->art_title)
+        ->where('ctg_id', $request->ctg_id)
+        ->first();
+        if($check_art_title == true){
+        return redirect('/admin/articles/' . $article_id . '/edit')->with('error', 'Judul sudah dipakai di dalam kategori!');
+        }
+$title = $request->art_title.' '.$request->ctg_id;
 
         $update = Article::where('art_id', $articles)->first();
         $image = substr($update->art_image, 21);
         echo $request->art_image;
         $update->art_category_id = $request->ctg_id;
         $update->art_title = $request->art_title;
-        $update->art_slug =  Str::slug($request->art_title);
+        $update->art_slug =  Str::slug($art_title);
         if($request->file('art_image')->getClientOriginalName() == $image ){} else{
             if ($request->hasFile('art_image')) {
                 $files = $request->file('art_image');
@@ -177,7 +189,7 @@ class ArticleController extends Controller
        
         $update->save();
 
-        return redirect('/admin/articles')->with('success', 'Artikel berhasil di ubah');
+        return redirect('/admin/articles')->with('success', 'Artikel telah diperbarui!');
     }
 
     /**

@@ -45,6 +45,6 @@ class CommentController extends Controller
 
         $comments->save();
 
-        return redirect("/articles/$slug")->with('success', 'Artikel berhasil di ubah');
+        return redirect("/articles/$slug")->with('success', 'Artikel telah diperbarui!');
     }
 }
