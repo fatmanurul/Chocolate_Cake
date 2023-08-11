@@ -19,10 +19,16 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
+        
+        $messages = [
+            'required' => 'Silahkan isi kolom ini!',
+            'email' => 'Email tidak valid!'
+        ];
+
        $credentials = $request->validate([
         'usr_email' => 'required|email:dns',
         'usr_password' => 'required'
-       ]);
+       ],$messages);
 
        $attempt = [
         'usr_email' => $request->usr_email,

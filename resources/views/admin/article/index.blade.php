@@ -6,24 +6,23 @@ Halaman Dashboard
  <!-- Boostrap Icons -->
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Artikel saya</h1>
+        <h1 class="h2">Daftar Artikel</h1>
       </div>
-  <div class="col-lg-8">
       @if(session()->has('success'))
           <div class="alert alert-success" role="alert">
             {{ session('success') }}
         </div>
       @endif
-  </div>  
-      <div class="table-responsive  col-lg-8">
-      <a href="/admin/articles/create" class="btn btn-primary mb-3">Tambah artikel baru</a>
+      <div class="table-responsive">
+      <a href="/admin/articles/create" class="btn btn-primary mb-3">Tambah Artikel Baru</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
               <th scope="col">No</th>
-              <th scope="col">Judul artikel</th>
+              <th scope="col">Judul Artikel</th>
               <th scope="col">Kategori</th>
-              <th scope="col">Action</th>
+              <th scope="col">Status</th>
+              <th scope="col">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +31,12 @@ Halaman Dashboard
               <td>{{$loop->iteration}}</td> 
               <td>{{$artikel->art_title}}</td>
               <td>{{$artikel->ctg_name}}</td>
+              <td>@if($artikel->art_status ==1)
+                Aktif
+                @else
+                Tidak aktif
+                @endif
+              </td>
               <td><div class="row"> 
                     <div class="col-2">
                           <a href="/admin/articles/{{ $artikel->art_id }}" class="badge bg-info"><span data-feather="eye"></span></a>

@@ -155,22 +155,25 @@ class ArticleController extends Controller
         ]);
      
         // dd($articles);
-
+ 
         $check_art_title = Article::join('categories','categories.ctg_id','articles.art_category_id')
         ->where('art_title', $request->art_title)
         ->where('ctg_id', $request->ctg_id)
+        ->where('art_id', '!=' ,$article_id)
         ->first();
+        //  dd($check_art_title);
         if($check_art_title == true){
         return redirect('/admin/articles/' . $article_id . '/edit')->with('error', 'Judul sudah dipakai di dalam kategori!');
         }
-$title = $request->art_title.' '.$request->ctg_id;
+        $title = $request->art_title.' '.$request->ctg_id;
 
-        $update = Article::where('art_id', $articles)->first();
+
+        $update = Article::where('art_id', $article_id)->first();
         $image = substr($update->art_image, 21);
         echo $request->art_image;
         $update->art_category_id = $request->ctg_id;
         $update->art_title = $request->art_title;
-        $update->art_slug =  Str::slug($art_title);
+        $update->art_slug =  Str::slug($title);
         if($request->file('art_image')->getClientOriginalName() == $image ){} else{
             if ($request->hasFile('art_image')) {
                 $files = $request->file('art_image');

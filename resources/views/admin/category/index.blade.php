@@ -4,22 +4,22 @@ Halaman Daftar Kategori
 @endsection
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Kategori</h1>
+        <h1 class="h2">Daftar Kategori</h1>
 </div>
-  <div class="col-lg-8">
       @if(session()->has('success'))
           <div class="alert alert-success" role="alert">
             {{ session('success') }}
         </div>
       @endif
-  </div>     
-      <div class="table-responsive col-lg-8">
-        <a href="/admin/categories/create" class="btn btn-primary mb-3">Tambah kategori baru</a>
+   
+      <div class="table-responsive">
+        <a href="/admin/categories/create" class="btn btn-primary mb-3">Tambah Kategori Baru</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
               <th scope="col">No</th>
               <th scope="col">Nama Kategori</th>
+              <th scope="col">Status</th>
               <th scope="col">Aksi</th>
             </tr>
           </thead>
@@ -28,6 +28,12 @@ Halaman Daftar Kategori
             @foreach ($category as $category)
               <td>{{$loop->iteration}}</td>
               <td>{{$category->ctg_name}}</td>
+              <td>@if($category->ctg_status ==1)
+                Aktif
+                @else
+                Tidak Aktif
+                @endif
+              </td>
               <td>
               <div class="row"> 
             <div class="col-2">

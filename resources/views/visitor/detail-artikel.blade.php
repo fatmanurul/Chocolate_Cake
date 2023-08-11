@@ -1,5 +1,5 @@
 <!-- cara menyambungkan dengan class induk/ main -->
-@extends('visitor.layouts.main')
+@extends('visitor.layouts.main1')
 <!-- memberitahu kalo ini adalah sebuah section yang bernama container -->
 @section('container')
 <div class="col-9">
@@ -10,7 +10,7 @@
     <p>Kategori : <a href="/kategori/{{$articles->ctg_id}}" class="text-black text-decoration-none">{{$articles->ctg_name}}</a></p>
         <center>
             <hr>
-            <img src="{{asset($articles->art_image)}}" style="height: 400px; width:400px; mb-4" class="card-img-top" alt="...">
+            <img src="{{asset($articles->art_image)}}" style="height: 600px; width:400px; mb-4" class="card-img-top" alt="...">
         </center>
 
      <div style="margin-top:50px;">
@@ -19,7 +19,6 @@
 </div>
 @endforeach
 </div>
-  
 @endsection
 
 @section('komentar')
@@ -64,7 +63,7 @@
                     @enderror
             </div>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control  @error ('cmn_email') is-invalid @enderror" id="cmn_email" name="cmn_email" >
+                <input type="text" class="form-control  @error ('cmn_email') is-invalid @enderror" id="cmn_email" name="cmn_email" >
                 <label for="floatingInput">Email</label>
                  <!-- pesan error -->
                     @error('cmn_email')

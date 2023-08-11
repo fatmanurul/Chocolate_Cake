@@ -45,16 +45,12 @@ footer .credit a {
               </p></b></h5>
               <hr>
               <select onChange="document.location.href=this.options[this.selectedIndex].value;" class="form-select">
-              <option value="0" selected>{{$ctg_name->ctg_name}}</option>
+              <option value="/">All</option>
               @foreach ($category as $category)
               @if($category->ctg_status == 1)
-                @if($category->ctg_id ==$category_id)
-                @else
               <option value="/categories/{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
-                 @endif
               @endif
               @endforeach
-              <option value="/">All</option>
               </select>
               <hr>
               <h5><b><p style = "font-family:Poppins; color:RGB(43, 43, 41); text-align: center;">

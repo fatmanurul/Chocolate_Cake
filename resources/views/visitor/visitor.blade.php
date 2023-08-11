@@ -1,5 +1,5 @@
         <!-- cara menyambungkan dengan class induk/ main -->
-@extends('visitor.layouts.main')
+        @extends('visitor.layouts.main1')
 <!-- memberitahu kalo ini adalah sebuah section yang bernama container -->
 @section('container')
 
@@ -10,7 +10,6 @@
     <div class="col-12">
         <div class="card" style="height: 1300px; width: 800px">
           <div class="position-absolute px-3 py-2" style="background-color: rgba(0, 0, 0,0.7)">
-         
                  <a href="#" class="text-white text-decoration-none">{{$articles->ctg_name}}</a></div>
                  <img src="{{asset($articles->art_image)}}" style="height: 1150px; width: 800px" class="card-img-top" alt="...">
                  <div class="card-body">

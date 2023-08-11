@@ -6,14 +6,13 @@ Halaman Ubah Artikel
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Ubah Artikel</h1>
       </div>
-      <div class="col-lg-8">
+
       @if(session()->has('error'))
           <div class="alert alert-danger" role="alert">
             {{ session('error') }}
         </div>
       @endif
-  </div> 
-<div class="col-lg-8">
+
 <form method="post" action="/admin/articles/{{$article->art_id}}" class="mb-5" enctype="multipart/form-data">
   @method('put')
     @csrf
@@ -76,7 +75,7 @@ Halaman Ubah Artikel
   <a href="/admin/articles" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
-</div>
+
 <script>
   function previewImage(){
  // menangkap variabel image dan mengambil inputan image

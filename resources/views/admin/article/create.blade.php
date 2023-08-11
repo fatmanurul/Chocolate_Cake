@@ -6,22 +6,20 @@ Halaman Tambah Artikel
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Tambah Artikel Baru</h1>
       </div>
-      <div class="col-lg-8">
       @if(session()->has('error'))
           <div class="alert alert-danger" role="alert">
             {{ session('error') }}
         </div>
       @endif
-  </div>  
-   <div class="col-lg-8">
+  
       @if(session()->has('success'))
           <div class="alert alert-success" role="alert">
             {{ session('success') }}
         </div>
       @endif
-  </div>  
 
-<div class="col-lg-8">
+
+
 <form method="post" action="/admin/articles" class="mb-5" enctype="multipart/form-data">
     @csrf
   <div class="mb-3">
@@ -53,7 +51,7 @@ Halaman Tambah Artikel
     @enderror
   </div>
   <div class="mb-3">
-  <label for="art_image" class="form-label">Gambar artikel</label>
+  <label for="art_image" class="form-label">Gambar Artikel</label>
   <img class="img-preview img-fluid mb-3 col-sm-5">
   <input class="form-control  @error ('art_image') is-invalid @enderror" type="file" id="art_image" name="art_image" onchange="previewImage()">
   @error('art_image')
@@ -64,7 +62,7 @@ Halaman Tambah Artikel
 </div>
 
 <div class="mb-3">
-        <label for="art_content" class="form-label">Isi artikel</label>
+        <label for="art_content" class="form-label">Isi Artikel</label>
         @error('art_content')
             <p class="text-danger">{{ $message }}</p>
         @enderror
@@ -74,7 +72,6 @@ Halaman Tambah Artikel
   <a href="/admin/articles" class="btn btn-secondary">Batal</a>
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
-</div>
 
 
 

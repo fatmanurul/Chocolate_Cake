@@ -16,7 +16,7 @@ class VisitorArticleController extends Controller
                            ->get();
         $category = Category::all();
    
-        return view ('visitor.artikels',['articles'=>$articles],compact('category'));
+        return view ('visitor.visitor',['articles'=>$articles],compact('category'));
        }
    
     public function show($slug){
@@ -53,6 +53,7 @@ class VisitorArticleController extends Controller
                            ->where('articles.art_category_id',$id)
                            ->get();
        $category = Category::all();
-        return view ('visitor.artikels',['articles'=>$articles],compact('category'));
+       $category_now = category::where('ctg_id', $id)->first();
+        return view ('visitor.artikels',['articles'=>$articles,'category_id'=>$id, 'ctg_name'=>$category_now],compact('category'));
       }
 }

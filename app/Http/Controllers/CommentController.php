@@ -25,7 +25,8 @@ class CommentController extends Controller
     {
 
         $messages = [
-            'required' => 'Silahkan isi kolom ini!'
+            'required' => 'Silahkan isi kolom ini!',
+            'email' => 'Email tidak valid!'
         ];
 
         $request->validate([
