@@ -1,5 +1,5 @@
         <!-- cara menyambungkan dengan class induk/ main -->
-        @extends('visitor.layouts.main1')
+        @extends('visitor.layouts.main')
 <!-- memberitahu kalo ini adalah sebuah section yang bernama container -->
 @section('container')
 
@@ -27,5 +27,21 @@
 @endforeach
 </div>
 @endsection
+@section('kategori')
+<h5><b><p style = "font-family:Perpetua; color:RGB(160, 97, 36);">
+              Cari Kategori :
+              </p></b></h5>
+              <hr>
+              <select onChange="document.location.href=this.options[this.selectedIndex].value;" class="form-select">
+              <option value="/">All</option>
+              @foreach ($category as $category)
+              @if($category->ctg_status == 1)
+              <option value="/categories/{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
+              @endif
+              @endforeach
+              </select>
+@endsection
+
+
 
   

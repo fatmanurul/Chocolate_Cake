@@ -28,5 +28,24 @@
 @endforeach
 </div>
 @endsection
+@section('kategori')
+<h5><b><p style = "font-family:Perpetua; color:RGB(160, 97, 36);">
+              Cari Kategori :
+              </p></b></h5>
+              <hr>
+              <select onChange="document.location.href=this.options[this.selectedIndex].value;" class="form-select">
+              <option value="0" selected>{{$ctg_name->ctg_name}}</option>
+              @foreach ($category as $category)
+              @if($category->ctg_status == 1)
+                @if($category->ctg_id ==$category_id)
+                @else
+              <option value="/categories/{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
+                 @endif
+              @endif
+              @endforeach
+              <option value="/">All</option>
+              </select>
+@endsection
+
 
   

@@ -27,8 +27,15 @@ Route::get('/', [VisitorArticleController::class,'index']);
 Route::get('/articles/{slug}', [VisitorArticleController::class,'show']);
 Route::get('/categories/{id}', [VisitorArticleController::class, 'category']);
 
+// prevent back
+Route::group(['middleware' => 'prevent-back-history'],function(){
+	Route::get('/admin/comments', [CommentController::class,'index'])->middleware('auth');
+    Route::get('/admin/dashboard',[DashboardController::class,'index'])->middleware('auth');
+    Route::resource('/admin/categories', CategoryController::class)->middleware('auth');
+    Route::resource('/admin/articles',ArticleController::class)->middleware('auth');
+});
+
 // route cms comment
-Route::get('/admin/comments', [CommentController::class,'index'])->middleware('auth');
 Route::post('/articles/{slug}',[CommentController::class,'store']);
 
 //route auth
@@ -37,14 +44,14 @@ Route::post('/login', [LoginController::class ,'authenticate']);
 Route::post('/logout', [LoginController::class ,'logout']);
 
 // route dashboard
-Route::get('/admin/dashboard',[DashboardController::class,'index'])->middleware('auth');
+
 
 // route cms kategori
-Route::resource('/admin/categories', CategoryController::class)->middleware('auth');
+
 Route::get('/admin/categories/{id}/switch', [CategoryController::class,'switch']);
 
 // route cms artikel
-Route::resource('/admin/articles',ArticleController::class)->middleware('auth');
+
 Route::get('/admin/articles/{id}/switch', [ArticleController::class,'switch']);
 
 

@@ -15,7 +15,7 @@ class VisitorArticleController extends Controller
         $articles = Article::join('categories','categories.ctg_id', 'articles.art_category_id')
                            ->get();
         $category = Category::all();
-   
+    //  dd($category);
         return view ('visitor.visitor',['articles'=>$articles],compact('category'));
        }
    
@@ -36,6 +36,8 @@ class VisitorArticleController extends Controller
                               ->count();
 
         //    dd($comments);
+        // $category_now = category::where('ctg_id', $id)->first();
+
                         return view ('visitor.detail-artikel',[
                             'articles' => $detail_article,
                             'category' => $category,
@@ -53,6 +55,7 @@ class VisitorArticleController extends Controller
                            ->where('articles.art_category_id',$id)
                            ->get();
        $category = Category::all();
+    //    dd($category);
        $category_now = category::where('ctg_id', $id)->first();
         return view ('visitor.artikels',['articles'=>$articles,'category_id'=>$id, 'ctg_name'=>$category_now],compact('category'));
       }

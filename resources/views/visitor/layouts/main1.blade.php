@@ -40,18 +40,7 @@ footer .credit a {
             <div class="col-3">
               <h2><p style="font-family:Lucida Bright; text-align:center; color:RGB(228, 216, 178); margin-top:17px; text-shadow: 1px 1px 1px grey;">Kreasikan kreatifitasmu dengan <span style="color:RGB(105, 58, 30);">memulai membuat cake!</span></h2></p>
               <hr>
-              <h5><b><p style = "font-family:Perpetua; color:RGB(160, 97, 36);">
-              Cari Kategori :
-              </p></b></h5>
-              <hr>
-              <select onChange="document.location.href=this.options[this.selectedIndex].value;" class="form-select">
-              <option value="/">All</option>
-              @foreach ($category as $category)
-              @if($category->ctg_status == 1)
-              <option value="/categories/{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
-              @endif
-              @endforeach
-              </select>
+             
               <hr>
               <h5><b><p style = "font-family:Poppins; color:RGB(43, 43, 41); text-align: center;">
               Sejarah Cake/Bolu :

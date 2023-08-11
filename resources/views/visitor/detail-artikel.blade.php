@@ -1,5 +1,5 @@
 <!-- cara menyambungkan dengan class induk/ main -->
-@extends('visitor.layouts.main1')
+@extends('visitor.layouts.main')
 <!-- memberitahu kalo ini adalah sebuah section yang bernama container -->
 @section('container')
 <div class="col-9">
@@ -22,7 +22,7 @@
 @endsection
 
 @section('komentar')
-<h3>Komentar {{$jml_komen}}</h3>
+<h3 class="mt-4">Komentar {{$jml_komen}}</h3>
 <hr style="width: 30rem;">
 @foreach($comments as $comments)
 <div class="card" style="width: 20rem;  margin-top:10px;">
@@ -77,6 +77,16 @@
             </div>
         </div>
 </form> 
+@endsection
+@section('kategori')
+<h5><b><p style = "font-family:Perpetua; color:RGB(160, 97, 36);">
+              Cari Kategori :
+              </p></b></h5>
+              <hr>
+              <select  disabled onChange="document.location.href=this.options[this.selectedIndex].value;" class="form-select">
+              <option value="0" selected>{{$articles->ctg_name}}</option>
+              <option value="/">All</option>
+              </select>
 @endsection
 
 
