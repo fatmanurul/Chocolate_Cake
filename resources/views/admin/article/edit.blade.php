@@ -20,7 +20,7 @@ Halaman Ubah Artikel
         <label for="art_title" class="form-label">Judul</label>
         <input type="text" class="form-control @error ('art_title') is-invalid @enderror" id="art_title" name="art_title" required autofocus value="{{old('art_title', $article->art_title)}}">
         <!-- pesan error -->
-        @error('judul')
+        @error('art_title')
         <div class="invalid-feedback">
           Silahkan isi kolom ini!
         </div>

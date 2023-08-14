@@ -3,26 +3,23 @@
 <!-- memberitahu kalo ini adalah sebuah section yang bernama container -->
 @section('container')
 <div class="col-9">
-@foreach($articles as $articles)
-  <div class="row mt-4">
-  <b><a href="/" class="bi bi-arrow-left" style="color:black; item-weigth:bold;">Beranda</a></b>
-    <h1 style="text-align:center; "><b>{{$articles->art_title}}</b></h1>
-    <p>Kategori : <a href="/kategori/{{$articles->ctg_id}}" class="text-black text-decoration-none">{{$articles->ctg_name}}</a></p>
-        <center>
-            <hr>
-            <img src="{{asset($articles->art_image)}}" style="height: 600px; width:400px; mb-4" class="card-img-top" alt="...">
-        </center>
+    <div class="row mt-4">
+        <b><a href="/" class="bi bi-arrow-left" style="color:black; item-weigth:bold;">Beranda</a></b>
+        <h1 style="text-align:center; "><b>{{$articles->art_title}}</b></h1>
+            <center>
+                <hr>
+                <img src="{{asset($articles->art_image)}}" style="height: 600px; width:400px; mb-4" class="card-img-top" alt="...">
+            </center>
 
-     <div style="margin-top:50px;">
-     {!! $articles->art_content !!}
+        <div style="margin-top:50px;">
+        {!! $articles->art_content !!}
+         </div>
     </div>
-</div>
-@endforeach
 </div>
 @endsection
 
 @section('komentar')
-<h3 class="mt-4">Komentar {{$jml_komen}}</h3>
+<h3 class="mt-4">Komentar {{$comments_count}}</h3>
 <hr style="width: 30rem;">
 @foreach($comments as $comments)
 <div class="card" style="width: 20rem;  margin-top:10px;">

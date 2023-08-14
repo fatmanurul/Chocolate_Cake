@@ -32,9 +32,11 @@ Halaman Tambah Artikel
     </div>
     @enderror
   </div>
+
   <div class="mb-3">
     <label for="category" class="form-label">Kategori</label>
     <select class="form-select" name="ctg_id">
+    <option value="/">Pilih Kategori</option>
     @foreach ($categories as $category)
       <option value="{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
     @endforeach

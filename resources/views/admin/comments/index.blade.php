@@ -12,9 +12,9 @@ Halaman Daftar Kategori
             <tr>
               <th scope="col">No</th>
               <th scope="col">Artikel</th>
+              <th scope="col">Komentar</th>
               <th scope="col">Nama</th>
               <th scope="col">Email</th>
-              <th scope="col">komentar</th>
             </tr>
           </thead>
           <tbody>
@@ -22,9 +22,9 @@ Halaman Daftar Kategori
             <tr>
               <td>{{$loop->iteration}}</td>
               <td>{{$comment->art_title}}</td>
+              <td>{{$comment->cmn_comment}}</td>
               <td>{{$comment->cmn_name}}</td>
               <td>{{$comment->cmn_email}}</td>
-              <td>{{$comment->cmn_comment}}</td>
         </div>
             </tr>
         @endforeach

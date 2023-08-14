@@ -43,7 +43,7 @@ footer .credit a {
               @yield('kategori')
               <hr>
               <h5><b><p style = "font-family:Poppins; color:RGB(43, 43, 41); text-align: center;">
-              Sejarah Cake/Bolu :
+              Sejarah Bolu :
               </p></b></h5>
               <hr>
               <img src="../img/ck1.jpg" style="height: 300px; width: 270px; mb-4" alt="" >

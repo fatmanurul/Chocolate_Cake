@@ -16,20 +16,20 @@ Halaman Dashboard
     <div class="row g-5">
           <div class="col-4">
               <div style=" background-color:RGB(237, 164, 76);padding: 10px; text-align:center;">
-                <h1 style="color:white;">{{$jml_kategori}}</h1>
-                <p style = "Times; color:white;">Kategori</p>
+                <h1 style="color:white;">{{$categories_count}}</h1>
+                <p style = "Times; color:white;">Jumlah Kategori</p>
               </div>
            </div>
         <div class="col-4">
               <div style=" background-color:RGB(93, 148, 227);padding: 10px; text-align:center;">
-                <h1 style="color:white;">{{$jml_artikel}}</h1>
-                <p style = "Times; color:white;">Artikel</p>
+                <h1 style="color:white;">{{$articles_count}}</h1>
+                <p style = "Times; color:white;">Jumlah Artikel</p>
                </div>
         </div>
         <div class="col-4">
               <div style=" background-color:RGB(154, 201, 105);padding: 10px; text-align:center;">
-                <h1 style="color:white;">{{$jml_komen}}</h1>
-                <p style = "Times; color:white;">Komentar</p>
+                <h1 style="color:white;">{{$comments_count}}</h1>
+                <p style = "Times; color:white;">Jumlah Komentar</p>
               </div>
         </div>
     </div>

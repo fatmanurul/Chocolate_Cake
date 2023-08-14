@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('admin.category.index',[
-            'category' => Category::all()
+            'category' => Category::all()//adalah metode yang digunakan untuk mengambil semua data kategori dari database. Dalam hal ini, Category adalah model yang mewakili entitas kategori dalam basis data.
           ]);
     }
 
@@ -41,13 +41,15 @@ class CategoryController extends Controller
         $message = [
             'unique' => 'Nama sudah dipakai!',
             'required' => 'Silahkan isi kolom ini!'
-        ];
+        ];//Variabel ini berisi pesan yang akan ditampilkan jika validasi data gagal. Pesan ini dapat disesuaikan dan disesuaikan dengan kondisi yang berbeda.
         $validatedData = $request->validate([
             'ctg_name' => 'required|max:255|unique:categories'     
         ],$message
     );
 
         $validatedData['ctg_created_by'] = auth()->user()->usr_id;
+
+
         // insert data ke database
         Category::create($validatedData);
 
@@ -95,11 +97,11 @@ class CategoryController extends Controller
         $validatedData = $request->validate([
             'ctg_name' => 'required|max:255|unique:categories,ctg_name,'.$category->ctg_id.',ctg_id,ctg_deleted_at,NULL'
         ],$message
-    );
+    );//kode ini memvalidasi bahwa nama kategori yang diinput harus unik dalam tabel 'categories', tetapi jika kategori dengan ID yang sama dengan yang sedang diedit sudah ada, validasi unik tidak akan diterapkan pada data tersebut.
 
          $validatedData['ctg_updated_by'] = auth()->user()->usr_id;
 
-        Category::where('ctg_id', $category->ctg_id)
+        Category::where('ctg_id', $category->ctg_id)//akan memilih catatan dalam tabel 'categories' yang memiliki nilai 'ctg_id' yang sama dengan nilai 'ctg_id' dari objek $category.
                 ->update($validatedData);
 
         return redirect('/admin/categories')->with('success', 'Kategori telah diperbarui!');

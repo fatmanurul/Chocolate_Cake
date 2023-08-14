@@ -10,13 +10,13 @@ use App\Models\Article;
 class DashboardController extends Controller
 {
     public function index(){
-        $jml_komen = Comment::all()->count();
-        $jml_kategori = Category::all()->count();
-        $jml_artikel = Article::all()->count();
+        $comments_count = Comment::all()->count();
+        $categories_count = Category::all()->count();
+        $articles_count = Article::all()->count();
         return view('admin.dashboard',[
-            'jml_komen' => $jml_komen,
-            'jml_kategori' => $jml_kategori,
-            'jml_artikel' => $jml_artikel,
+            'comments_count' => $comments_count,
+            'categories_count' => $categories_count,
+            'articles_count' => $articles_count,
         ]);
     }
 }

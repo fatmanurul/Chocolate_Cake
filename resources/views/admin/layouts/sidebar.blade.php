@@ -22,7 +22,7 @@
           <li class="nav-item">
             <a class="nav-link {{Request::is('admin/comments*')? 'active' : '' }}" href="/admin/comments">
               <span data-feather="message-square"></span>
-              komentar
+              Komentar
             </a>
           </li>
         </ul>

@@ -20,32 +20,30 @@ class VisitorArticleController extends Controller
        }
    
     public function show($slug){
-           $article_check = Article::where('articles.art_slug', $slug)
-                                   ->first(); //cara mengecek slug pertama
+        //    $article_check = Article::where('articles.art_slug', $slug)
+        //                            ->first(); //cara mengecek slug pertama
            $detail_article = Article::join('categories','categories.ctg_id', 'articles.art_category_id')
                                    ->where('articles.art_slug', $slug)
-                                   ->get();
+                                   ->first();
+
+                                //    dd($detail_article);
            $category = Category::all();
 
            $comments = Article::join('comments','articles.art_id', 'comments.cmn_articles_id')
                               ->where('articles.art_slug', $slug)
                               ->get();
 
-         $jml_komen = Article::join('comments','articles.art_id', 'comments.cmn_articles_id')
+         $comments_count = Article::join('comments','articles.art_id', 'comments.cmn_articles_id')
                               ->where('articles.art_slug', $slug)
                               ->count();
 
-        //    dd($comments);
-        // $category_now = category::where('ctg_id', $id)->first();
 
                         return view ('visitor.detail-artikel',[
                             'articles' => $detail_article,
                             'category' => $category,
                             'comments' => $comments,
-                            'jml_komen' => $jml_komen
+                            'comments_count' => $comments_count
                         ]);
-                       
-
        }
 
 
