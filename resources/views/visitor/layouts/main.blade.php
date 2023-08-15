@@ -19,13 +19,18 @@ footer {
 }
 
 footer .credit {
-  font-size: 0.8rem;
+  font-size: 1 rem;
 }
 
 footer .credit a {
   color: RGB(160, 97, 36);
   font-weight: 700;
 }
+
+.footer {
+    background-color: rgb(202, 141, 109);
+  }
+
 </style>
   </head>
   <body>
@@ -34,11 +39,12 @@ footer .credit a {
     <!-- Agar tulisan berada di dalam container -->
     <div class="container mt-4">
         <!-- memberitahu halaman child -->
-        <div class="container">
+      <div class="container">
+      @yield('navigation')
           <div class="row">
         @yield('container') 
-            <div class="col-3">
-              <h2><p style="font-family:Lucida Bright; text-align:center; color:RGB(228, 216, 178); margin-top:17px; text-shadow: 1px 1px 1px grey;">Kreasikan kreatifitasmu dengan <span style="color:RGB(105, 58, 30);">memulai membuat cake!</span></h2></p>
+            <div class="col-4">
+              <h2><p style="font-family:Lucida Bright; text-align:center; color:RGB (202, 141, 109); margin-top:17px; text-shadow: 1px 1px 1px grey;">Kreasikan kreatifitasmu dengan <span style="color:RGB(105, 58, 30);">memulai membuat cake!</span></h2></p>
               <hr>
               @yield('kategori')
               <hr>
@@ -46,7 +52,7 @@ footer .credit a {
               Sejarah Bolu :
               </p></b></h5>
               <hr>
-              <img src="../img/ck1.jpg" style="height: 300px; width: 270px; mb-4" alt="" >
+              <img src="../img/ck1.jpg" style="height: 400px; width: 400px; mb-4" alt="" >
               <small>Bolu atau kue bolu (dari bahasa Portugis: bolo; bahasa Inggris: cake) adalah kue berbahan dasar tepung (umumnya tepung terigu), gula, dan telur. Kue bolu dan cake umumnya dimatangkan dengan cara dipanggang di dalam oven, walaupun ada juga bolu yang dikukus, misalnya: bolu kukus atau brownies kukus. Cake yang dihias dengan lapisan dari krim mentega, fondant, atau marzipan disebut kue tart (kue tarcis).
 
               Cake berhias (kue tart) atau tanpa hiasan digunakan sebagai makanan penutup atau hidangan istimewa resepsi pernikahan atau pesta ulang tahun. Dalam resepsi pernikahan ala Barat dan pesta ulang tahun, upacara pemotongan kue tart merupakan salah satu acara. Di Indonesia, nasi tumpeng sering menggantikan peran cake sebagai makanan istimewa dalam berbagai upacara peringatan. Acara pemotongan kue juga sering digantikan acara pemotongan tumpeng.</small>
@@ -61,7 +67,7 @@ footer .credit a {
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
-    <footer class="bg-body-secondary">
+    <footer class="footer" style="background-color: rgb(202, 141, 109);">
       <div class="credit">
         <p>Created by <a href="">Fatma Nurul Hidayah</a>. | &copy; 2023.</p>
       </div>

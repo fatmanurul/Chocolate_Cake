@@ -1,10 +1,13 @@
 <!-- Navbar start -->
-<nav class="navbar navbar-expand-lg bg-body-secondary p-3">
+<style>
+   .navbar {
+    background-color: rgb(202, 141, 109);
+  }
+</style>
+<nav class="navbar" style="background-color: rgb(202, 141, 109);">
   <div class="container">
-    <a class="navbar-brand" href="/"><h2><p style = "font-family:Brush Script MT; color:RGB(105, 58, 30);">
-Chocolate Cake</p></h2></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"  aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <a class="navbar-brand" href="/"><h1><p style = "font-family:Brush Script MT; color:RGB(42, 5, 5);">
+Chocolate Cake</p></h1></a>
     </button>
     <div class="right navbar-right" id="navbarNav">
       <ul class="navbar-nav">

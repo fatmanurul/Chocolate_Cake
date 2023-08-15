@@ -38,7 +38,7 @@ class VisitorArticleController extends Controller
                               ->count();
 
 
-                        return view ('visitor.detail-artikel',[
+                        return view ('visitor.article-details',[
                             'articles' => $detail_article,
                             'category' => $category,
                             'comments' => $comments,

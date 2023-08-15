@@ -2,7 +2,7 @@
 @extends('visitor.layouts.main')
 <!-- memberitahu kalo ini adalah sebuah section yang bernama container -->
 @section('container')
-<div class="col-9">
+<div class="col-8">
     <div class="row mt-4">
         <b><a href="/" class="bi bi-arrow-left" style="color:black; item-weigth:bold;">Beranda</a></b>
         <h1 style="text-align:center; "><b>{{$articles->art_title}}</b></h1>
