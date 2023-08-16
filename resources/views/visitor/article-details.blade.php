@@ -70,7 +70,7 @@
                         @enderror
             </div>
             <div class="form-floating mb-3">
-                 <button type="submit" class="btn btn-primary">Kirim</button>
+                 <button type="submit" class="btn btn-primary custom-button">Kirim</button>
             </div>
         </div>
 </form> 

@@ -7,26 +7,19 @@
           <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="../img/lans3.jpg"  alt="...">
-                    <div class="carousel-caption d-none d-md-flex flex-column justify-content-center align-items-center position-absolute" style="top: 50%; transform: translateY(-50%); width: 100%;">
-                      <h1>Second slide label</h1>
-                      <p>Some representative placeholder content for the second slide.</p>
+                    <img src="../img/3.jpg"  alt="...">
+                    <div class="carousel-caption d-none d-md-flex flex-column justify-content-center align-items-center position-absolute" style="top: 50%; transform: translateY(-50%); width: 100%; text-align: center; max-width: 100%;">
+                   <h1 style="font-family:Tex Gyre Adventor; font-size: 40px; text-align:center; color:RGB (202, 141, 109); margin-top:17px; text-shadow: 1px 1px 1px red;">Semua resep cake yang pastinya </h1>
+                    <h1  style="font-family:Tex Gyre Adventor; font-size: 40px; text-align:center; color:RGB (202, 141, 109); margin-top:17px; text-shadow: 1px 1px 1px red;">mudah untuk diikuti!</h1>
                     </div>
-                  </div>
-              <div class="carousel-item">
-                  <img src="../img/kue.jpg" style="width: 2000px; height: 550px" alt="...">
-                  <div class="carousel-caption d-none d-md-flex flex-column justify-content-center align-items-center position-absolute" style="top: 50%; transform: translateY(-50%); width: 100%; text-align: center; max-width: 100%;">
-                    <h1>Second slide label</h1>
-                    <p>Some representative placeholder content for the second slide.</p>
-                  </div>
+                </div>
+                <div class="carousel-item">
+                      <img src="../img/pu.jpg"  alt="...">
+                      <div class="carousel-caption d-none d-md-flex flex-column justify-content-center align-items-center position-absolute"
+                          style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center; max-width: 100%;">
+                          <h1 style="font-family:Tex Gyre Adventor; font-size: 40px; text-align:center; color:RGB (202, 141, 109); margin-top:17px; text-shadow: 1px 1px 1px red;">Ikuti berbagai resep yang kamu inginkan!</h1>
+                 </div>
               </div>
-              <div class="carousel-item">
-                  <img src="../img/lans.jpg" style="width: 2000px; height: 550px" alt="...">
-                  <div class="carousel-caption d-none d-md-flex flex-column justify-content-center align-items-center position-absolute" style="top: 50%; transform: translateY(-50%); width: 100%; text-align: center; max-width: 100%;">
-                    <h1>Second slide label</h1>
-                    <p>Some representative placeholder content for the second slide.</p>
-                  </div>
-            </div>
           </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -36,10 +29,6 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-            <hr>
-            <!-- <center> -->
-          <!-- <h1 style="font-family:serif; text-align:center; color:RGB(113, 48, 36); margin-top:17px; text-shadow: 1px 1px 1px grey;">Berbagi resep seputar olahan Kue!</h1>
-          </center> -->
         </div>
 @endsection
 @section('container')
@@ -59,7 +48,9 @@
                  </div>
 
                  <div class="card-footer">
-                         <a href="/articles/{{$articles->art_slug}}" class="btn btn-primary">Baca Selengkapnya</a>
+                 <div class="card-footer">
+                    <a href="/articles/{{$articles->art_slug}}" class="btn btn-primary custom-button">Baca Selengkapnya</a>
+                  </div>
                  </div>
          </div>
      </div>

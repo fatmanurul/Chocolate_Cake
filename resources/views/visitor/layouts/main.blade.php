@@ -31,6 +31,22 @@ footer .credit a {
     background-color: rgb(202, 141, 109);
   }
 
+.custom-button {
+    background-color: rgb(202, 141, 109);
+
+     /* Menghilangkan efek outline/border pada state aktif */
+     outline: none;
+    border: none;
+}
+
+.custom-button:hover {
+    background-color: rgb(180, 120, 90); /* Warna yang berbeda saat dihover */
+}
+
+.custom-image {
+    max-width: 100%;
+    height: auto;
+}
 </style>
   </head>
   <body>
@@ -49,10 +65,10 @@ footer .credit a {
               @yield('kategori')
               <hr>
               <h5><b><p style = "font-family:Poppins; color:RGB(43, 43, 41); text-align: center;">
-              Sejarah Bolu :
+              Sejarah Cake :  
               </p></b></h5>
               <hr>
-              <img src="../img/ck1.jpg" style="height: 400px; width: 400px; mb-4" alt="" >
+              <img src="../img/ck1.jpg" style="height: 400px; width: 400px; mb-4;" alt="" >
               <small>Bolu atau kue bolu (dari bahasa Portugis: bolo; bahasa Inggris: cake) adalah kue berbahan dasar tepung (umumnya tepung terigu), gula, dan telur. Kue bolu dan cake umumnya dimatangkan dengan cara dipanggang di dalam oven, walaupun ada juga bolu yang dikukus, misalnya: bolu kukus atau brownies kukus. Cake yang dihias dengan lapisan dari krim mentega, fondant, atau marzipan disebut kue tart (kue tarcis).
 
               Cake berhias (kue tart) atau tanpa hiasan digunakan sebagai makanan penutup atau hidangan istimewa resepsi pernikahan atau pesta ulang tahun. Dalam resepsi pernikahan ala Barat dan pesta ulang tahun, upacara pemotongan kue tart merupakan salah satu acara. Di Indonesia, nasi tumpeng sering menggantikan peran cake sebagai makanan istimewa dalam berbagai upacara peringatan. Acara pemotongan kue juga sering digantikan acara pemotongan tumpeng.</small>
@@ -62,7 +78,7 @@ footer .credit a {
             @yield('komentar')
           </div >
         </div >
-
+     </div >
         
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

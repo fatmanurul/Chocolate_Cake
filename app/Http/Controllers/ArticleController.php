@@ -59,6 +59,7 @@ class ArticleController extends Controller
         ];
         // $messages = [..]   Ini adalah sebuah array yang berisi pesan yang akan ditampilkan jika validasi gagal. Pesan ini akan digunakan untuk memberikan informasi lebih jelas kepada pengguna mengenai apa yang salah dengan input mereka.
 
+        // Input::flash()
         $request->validate([
             'art_title' => [
                 'required',
@@ -71,18 +72,26 @@ class ArticleController extends Controller
 
         $check_art_title = Article::join('categories','categories.ctg_id','articles.art_category_id')// menggunakan model Eloquent Article untuk mengakses tabel articles. join adalah metode yang digunakan untuk melakukan operasi penggabungan antara dua tabel. Dalam hal ini, kita menggabungkan tabel articles dengan tabel categories berdasarkan kolom yang sesuai.
                                     ->where('art_title', $request->art_title)//Memastikan judul artikel sama dengan judul yang diinputkan oleh pengguna.
-                                    ->where('ctg_id', $request->ctg_id)//Memastikan ID kategori sama dengan ID kategori yang diinputkan oleh pengguna.
-                                    ->first();//Metode ini akan mengembalikan hasil pertama dari query yang dibuat.Kita hanya tertarik untuk mengetahui apakah artikel dengan judul yang sama ditemukan dalam kategori yang sama atau tidak.
-        if($check_art_title == true){
-         return redirect('/admin/articles/create')->with('error', 'Judul sudah dipakai di dalam kategori!');
-        }//memeriksa apakah variabel $check_art_title yang telah didefinisikan sebelumnya bernilai true. Jika nilai ini adalah true, artinya artikel dengan judul yang sama sudah ada dalam kategori yang sama. Dalam hal ini, pengguna akan diarahkan kembali ke halaman pembuatan artikel dengan pesan kesalahan yang disimpan dalam session menggunakan metode with('error', 'Judul sudah dipakai di dalam kategori!'). Pesan kesalahan ini dapat ditampilkan kepada pengguna di tampilan nanti.
+                                    ->get();//Metode ini akan mengembalikan hasil pertama dari query yang dibuat.Kita hanya tertarik untuk mengetahui apakah artikel dengan judul yang sama ditemukan dalam kategori yang sama atau tidak.
         
         $title = $request->art_title.' '.$request->ctg_id;//menghasilkan string yang terdiri dari judul artikel yang diinputkan oleh pengguna diikuti oleh spasi dan kemudian diikuti oleh ID kategori yang juga diinputkan oleh pengguna. Ini adalah langkah awal untuk membuat slug yang akan digunakan dalam URL artikel. 
+        $base_slug = Str::slug($request->art_title);
+        $unique_slug = $base_slug;
+
+        if ($check_art_title->count() > 0) {
+            // Jika ada artikel dengan judul yang sama, tambahkan nomor unik pada slug
+            $count = 1;
+            while (Article::where('art_slug', $unique_slug)->count() > 0) {
+                $unique_slug = $base_slug . '-' . $count;
+                $count++;
+            }
+        }
+
         $article = new Article;// membuat instance baru dari model Article yang akan digunakan untuk menyimpan data artikel baru.
         
         $article-> art_title = $request->art_title;
         $article-> art_category_id =$request->ctg_id;
-        $article-> art_slug = Str::slug($title);
+        $article->art_slug = $unique_slug; // Gunakan slug yang unik
         $article-> art_excerpt = $request->art_excerpt;
         $article-> art_image = $request->art_image;
         $article-> art_content = $request->art_content;
