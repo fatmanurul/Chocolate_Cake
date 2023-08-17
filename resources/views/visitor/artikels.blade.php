@@ -18,12 +18,12 @@
                  <a href="#" class="text-white text-decoration-none">{{$articles->ctg_name}}</a></div>
                  <img src="{{asset($articles->art_image)}}"  style="height: 700px; width: 700px" class="card-img-top" alt="...">
                  <div class="card-body">
-                         <div class="card-title"><h4>{{ $articles->art_title }}</h4></div>
-                         {{ $articles->art_excerpt }}
+                         <div class="card-title" style="font-family:Lucida Bright;"><h4>{{ $articles->art_title }}</h4></div>
+                         <small style="font-family:Verdana;">{{ $articles->art_excerpt }}</small>
                  </div>
 
                  <div class="card-footer">
-                 <a href="/articles/{{$articles->art_slug}}" class="btn btn-primary custom-button">Baca Selengkapnya</a>
+                 <a href="/articles/{{$articles->art_slug}}" class="btn btn-primary custom-button" style="font-family:Optima">Baca Selengkapnya</a>
                  </div>
          </div>
      </div>
