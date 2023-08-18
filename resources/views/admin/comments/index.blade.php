@@ -11,7 +11,7 @@ Halaman Daftar Kategori
           <thead>
             <tr>
               <th scope="col">No</th>
-              <th scope="col">Artikel</th>
+              <th scope="col">Judul Artikel</th>
               <th scope="col">Komentar</th>
               <th scope="col">Nama</th>
               <th scope="col">Email</th>

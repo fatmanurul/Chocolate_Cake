@@ -10,16 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function index (){
-        return view('login.index', [
-            'title' => 'login',
-            "active" => "login"
-        ]);
+        return view('login.index');
     }
 
 
     public function authenticate(Request $request)
-    {
-        
+    { 
         $messages = [
             'required' => 'Silahkan isi kolom ini!',
             'email' => 'Email tidak valid!'

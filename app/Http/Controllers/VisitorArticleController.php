@@ -16,7 +16,10 @@ class VisitorArticleController extends Controller
                            ->get();
         $category = Category::all();//menampilkan kategori di filter kategori
     //  dd($category);
-        return view ('visitor.visitor',['articles'=>$articles],compact('category'));//mengirimkan data kategori ke view
+        return view ('visitor.visitor',[
+            'articles' => $articles,
+            'category' => $category
+        ]);//mengirimkan data kategori ke view
        }
    
     public function show($slug){
@@ -54,6 +57,11 @@ class VisitorArticleController extends Controller
        $category = Category::all();
     //    dd($category);
        $category_now = category::where('ctg_id', $id)->first();//mencari ctg_id yang pertama ditemukan
-        return view ('visitor.artikels',['articles'=>$articles,'category_id'=>$id, 'ctg_name'=>$category_now],compact('category'));//agar langsung berisi categori yang sedang dipilih
+        return view ('visitor.artikels',[
+            'articles'=>$articles,
+            'category_id'=>$id,
+            'ctg_name'=>$category_now,
+            'category' => $category
+            ]);//agar langsung berisi categori yang sedang dipilih
       }
 }

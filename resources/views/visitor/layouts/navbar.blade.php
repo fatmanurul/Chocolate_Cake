@@ -1,10 +1,10 @@
 <!-- Navbar start -->
 <style>
    .navbar {
-    background-color: rgb(202, 141, 109);
+    background-color: RGB(220, 169, 115);
   }
 </style>
-<nav class="navbar" style="background-color: rgb(202, 141, 109);">
+<nav class="navbar" style="background-color: RGB(220, 169, 115);">
   <div class="container">
     
     <a class="navbar-brand" href="/"><h1><p style = "font-family:Brush Script MT; color:RGB(42, 5, 5);">

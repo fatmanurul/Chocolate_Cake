@@ -101,7 +101,7 @@ class CategoryController extends Controller
 
          $validatedData['ctg_updated_by'] = auth()->user()->usr_id;
 
-        Category::where('ctg_id', $category->ctg_id)//akan memilih catatan dalam tabel 'categories' yang memiliki nilai 'ctg_id' yang sama dengan nilai 'ctg_id' dari objek $category.
+         Category::where('ctg_id', $category->ctg_id)//akan memilih catatan dalam tabel 'categories' yang memiliki nilai 'ctg_id' yang sama dengan nilai 'ctg_id' dari objek $category.
                 ->update($validatedData);
 
         return redirect('/admin/categories')->with('success', 'Kategori telah diperbarui!');

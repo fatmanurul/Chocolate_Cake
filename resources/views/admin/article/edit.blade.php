@@ -18,11 +18,11 @@ Halaman Ubah Artikel
     @csrf
       <div class="mb-3">
         <label for="art_title" class="form-label">Judul</label>
-        <input type="text" class="form-control @error ('art_title') is-invalid @enderror" id="art_title" name="art_title" required autofocus value="{{old('art_title', $article->art_title)}}">
+        <input type="text" class="form-control @error ('art_title') is-invalid @enderror" id="art_title" name="art_title" autofocus value="{{old('art_title', $article->art_title)}}">
         <!-- pesan error -->
         @error('art_title')
         <div class="invalid-feedback">
-          Silahkan isi kolom ini!
+        {{ $message }}
         </div>
         @enderror
       </div>
@@ -37,12 +37,12 @@ Halaman Ubah Artikel
       </div>
       <div class="mb-3">
         <label for="art_excerpt" class="form-label">Kutipan</label>
-        <input type="text" class="form-control @error ('art_excerpt') is-invalid @enderror" id="art_excerpt" name="art_excerpt" required autofocus  value="{{old('art_excerpt', $article->art_excerpt)}}">
+        <input type="text" class="form-control @error ('art_excerpt') is-invalid @enderror" id="art_excerpt" name="art_excerpt" autofocus  value="{{old('art_excerpt', $article->art_excerpt)}}">
         <!-- pesan error -->
         @error('art_excerpt')
-        <div class="invalid-feedback">
-          Silahkan isi kolom ini!
-        </div>
+          <div class="invalid-feedback">
+          {{ $message }}
+          </div>
         @enderror
       </div>
 
@@ -55,11 +55,11 @@ Halaman Ubah Artikel
       <img class="img-preview img-fluid mb-3 col-sm-5 d-block">
       @endif
       <input class="form-control @error('art_image') is-invalid @enderror" type="file" id="art_image" name="art_image" onchange="previewImage()">
-      @error('image')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+      @error('art_image')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+      @enderror
     </div>
       
 
@@ -100,9 +100,10 @@ Halaman Ubah Artikel
     const fileInput = document.querySelector('input[type="file"]');
     var str = "{{$article->art_image}}";
     var res =  str.substring(21);
+    console.log(res,str);
     // Create a new File object
     const myFile = new File(['file_image'], res, {
-        type: 'text/plain',
+        type: 'image/png',
         lastModified: new Date(),
     });
 

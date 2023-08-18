@@ -2,6 +2,29 @@
         
         @extends('visitor.layouts.main')
 <!-- memberitahu kalo ini adalah sebuah section yang bernama container -->
+<style>
+  
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 3rem;
+}
+
+footer .credit {
+  font-size: 3 rem;
+  font-family:Garamond;
+
+}
+
+footer .credit a {
+  color: RGB(197, 37, 37);
+  font-weight: 700;
+}
+
+.footer {
+    background-color: RGB(220, 169, 115);
+  }
+</style>
 @section('navigation')
 <div class="col-12">
           <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -73,6 +96,14 @@
               @endif
               @endforeach
               </select>
+@endsection
+
+@section('footer')
+<footer class="footer" style="background-color: RGB(220, 169, 115);">
+      <div class="credit">
+        <p>Created by <a href="">Fatma Nurul Hidayah</a>. | &copy; 2023.</p>
+      </div>
+    </footer>
 @endsection
 
 

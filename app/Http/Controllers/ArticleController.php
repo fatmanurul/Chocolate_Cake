@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ArticleController extends Controller
 {
@@ -51,7 +52,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $requests = $request->input(); //mengambil semua data input dari objek Request dan menyimpannya dalam variabel $requests. mencakup semua data yang dikirimkan oleh pengguna dalam formulir, seperti judul artikel, cuplikan, gambar, dan konten artikel.
+        // dd($request->art_image);
         $messages = [
             'required' => 'Silahkan isi kolom ini!',
             'max' => 'Tidak boleh lebih dari 100 karakter!',
@@ -74,17 +75,15 @@ class ArticleController extends Controller
                                     ->where('art_title', $request->art_title)//Memastikan judul artikel sama dengan judul yang diinputkan oleh pengguna.
                                     ->get();//Metode ini akan mengembalikan hasil pertama dari query yang dibuat.Kita hanya tertarik untuk mengetahui apakah artikel dengan judul yang sama ditemukan dalam kategori yang sama atau tidak.
         
-        $title = $request->art_title.' '.$request->ctg_id;//menghasilkan string yang terdiri dari judul artikel yang diinputkan oleh pengguna diikuti oleh spasi dan kemudian diikuti oleh ID kategori yang juga diinputkan oleh pengguna. Ini adalah langkah awal untuk membuat slug yang akan digunakan dalam URL artikel. 
-        $base_slug = Str::slug($request->art_title);
-        $unique_slug = $base_slug;
+        $base_slug = Str::slug($request->art_title);//Pada baris ini, kode mengambil judul artikel dari permintaan (request) yang masuk dan menggunakan fungsi Str::slug() untuk mengonversinya menjadi bentuk slug. Fungsi Str::slug() berfungsi untuk menggantikan karakter non-alfanumerik(karakter non-alfanumerik (seperti spasi, tanda baca, atau karakter khusus lainnya) dalam judul artikel akan dihapus atau digantikan dengan karakter "-" oleh fungsi Str::slug(). Hal ini dilakukan untuk menghasilkan string yang bersih dan cocok digunakan dalam URL, karena URL biasanya tidak boleh mengandung karakter non-alfanumerik.) dengan tanda strip "-" sehingga cocok digunakan dalam URL. Hasil slug ini disimpan dalam variabel $base_slug.
+        $unique_slug = $base_slug;//ertujuan untuk memulai variabel $unique_slug dengan nilai yang sama seperti $base_slug, yang kemudian akan dimodifikasi jika diperlukan untuk menciptakan slug yang benar-benar unik.
 
-        if ($check_art_title->count() > 0) {
-            // Jika ada artikel dengan judul yang sama, tambahkan nomor unik pada slug
-            $count = 1;
-            while (Article::where('art_slug', $unique_slug)->count() > 0) {
+        if ($check_art_title->count() > 0) {//digunakan untuk menghitung berapa banyak artikel yang ditemukan dengan judul yang sama. Jika hasil hitungannya lebih besar dari 0, itu berarti ada artikel dengan judul yang sama.
+            $count = 1;// adalah nomor unik yang akan ditambahkan ke slug jika diperlukan.
+            while (Article::where('art_slug', $unique_slug)->count() > 0) {//loop while yang akan berjalan selama ada artikel lain dengan slug yang sama dengan $unique_slug.
                 $unique_slug = $base_slug . '-' . $count;
                 $count++;
-            }
+            }//$unique_slug diperbarui dengan tambahan nomor unik yang disimpan dalam variabel $count. Jadi, jika slug art_slug sudah ada, maka akan ditambahkan nomor unik setelah tanda strip -.$count ditingkatkan untuk menyiapkan nomor unik untuk iterasi berikutnya.
         }
 
         $article = new Article;// membuat instance baru dari model Article yang akan digunakan untuk menyimpan data artikel baru.
@@ -161,26 +160,45 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $article_id)//selain reques, parameter lain di dapat di url dinamis
     {
-        // dd($request->file('art_image')->getClientOriginalName());
+        // dd($request->art_image);
+        // $request->art_image = $request->file('art_image')->getClientOriginalName();
+       
+ 
+
+         $messages = [
+            'required' => 'Silahkan isi kolom ini!',
+            'max' => 'Tidak boleh lebih dari 100 karakter!',
+            'image' => 'Anda hanya dapat mengunggah gambar!'
+        
+        ];
 
         $article = $request->validate([
-            'art_title' => 'required|max:255 '
-        ]);//Bagian ini mengambil data yang dikirimkan melalui form untuk diperiksa validitasnya menggunakan metode validate(). Dalam kasus ini, validasi hanya diterapkan pada art_title, memastikan judul artikel diisi dan tidak lebih dari 255 karakter.
-        
-     
-        // dd($articles);
+            'art_title' => 'required|max:100 ',
+            'art_excerpt' => 'required|max:100',
+            'art_image' => 'required',
+            'art_content' => 'required',
+        ], $messages);//Bagian ini mengambil data yang dikirimkan melalui form untuk diperiksa validitasnya menggunakan metode validate(). Dalam kasus ini, validasi hanya diterapkan pada art_title, memastikan judul artikel diisi dan tidak lebih dari 255 karakter.
+
  
         $check_art_title = Article::join('categories','categories.ctg_id','articles.art_category_id')
         ->where('art_title', $request->art_title)
         ->where('ctg_id', $request->ctg_id)
         ->where('art_id', '!=' ,$article_id)
-        ->first();
+        ->get();
         //  dd($check_art_title);
-        if($check_art_title == true){
-        return redirect('/admin/articles/' . $article_id . '/edit')->with('error', 'Judul sudah dipakai di dalam kategori!');
-        }//Bagian ini melakukan pengecekan apakah judul artikel yang diubah sudah ada dalam kategori yang sama dan berbeda dari artikel yang sedang diubah. Jika ada, akan mengarahkan kembali ke halaman edit dengan pesan kesalahan.
+    
 
-        $title = $request->art_title.' '.$request->ctg_id;//Ini menggabungkan judul artikel dan ID kategori yang diinputkan oleh pengguna, untuk membuat slug (URL ramah SEO) yang akan digunakan.
+        $base_slug = Str::slug($request->art_title);//Pada baris ini, kode mengambil judul artikel dari permintaan (request) yang masuk dan menggunakan fungsi Str::slug() untuk mengonversinya menjadi bentuk slug. Fungsi Str::slug() berfungsi untuk menggantikan karakter non-alfanumerik(karakter non-alfanumerik (seperti spasi, tanda baca, atau karakter khusus lainnya) dalam judul artikel akan dihapus atau digantikan dengan karakter "-" oleh fungsi Str::slug(). Hal ini dilakukan untuk menghasilkan string yang bersih dan cocok digunakan dalam URL, karena URL biasanya tidak boleh mengandung karakter non-alfanumerik.) dengan tanda strip "-" sehingga cocok digunakan dalam URL. Hasil slug ini disimpan dalam variabel $base_slug.
+        $unique_slug = $base_slug;//ertujuan untuk memulai variabel $unique_slug dengan nilai yang sama seperti $base_slug, yang kemudian akan dimodifikasi jika diperlukan untuk menciptakan slug yang benar-benar unik.
+
+        if ($check_art_title->count() > 0) {//digunakan untuk menghitung berapa banyak artikel yang ditemukan dengan judul yang sama. Jika hasil hitungannya lebih besar dari 0, itu berarti ada artikel dengan judul yang sama.
+            $count = 1;// adalah nomor unik yang akan ditambahkan ke slug jika diperlukan.
+            while (Article::where('art_slug', $unique_slug)->count() > 0) {//loop while yang akan berjalan selama ada artikel lain dengan slug yang sama dengan $unique_slug.
+                $unique_slug = $base_slug . '-' . $count;
+                $count++;
+            }//$unique_slug diperbarui dengan tambahan nomor unik yang disimpan dalam variabel $count. Jadi, jika slug art_slug sudah ada, maka akan ditambahkan nomor unik setelah tanda strip -.$count ditingkatkan untuk menyiapkan nomor unik untuk iterasi berikutnya.
+        }
+
 
 
 
@@ -189,7 +207,7 @@ class ArticleController extends Controller
         echo $request->art_image;
         $update->art_category_id = $request->ctg_id;
         $update->art_title = $request->art_title;
-        $update->art_slug =  Str::slug($title);//Ini adalah bagian di mana data artikel yang akan diperbarui diperbarui dengan nilai-nilai dari form yang dikirim oleh pengguna.
+        $update->art_slug =  Str::slug($unique_slug);//Ini adalah bagian di mana data artikel yang akan diperbarui diperbarui dengan nilai-nilai dari form yang dikirim oleh pengguna.
         if($request->file('art_image')->getClientOriginalName() == $image ){} else{
             if ($request->hasFile('art_image')) {
                 $files = $request->file('art_image');
