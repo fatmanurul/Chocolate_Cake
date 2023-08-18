@@ -54,6 +54,19 @@ footer .credit a {
             </button>
         </div>
 @endsection
+
+@section('search')
+<div class="row justify-content-center mt-4">
+  <div class="col-md-6">
+        <form action="/">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="search.." name="search" value="{{request('search') }}">
+            <button class="btn btn-secondary" type="submit">Search</button>
+          </div>
+        </form>
+  </div>
+</div>
+@endsection
 @section('container')
 
 <div class="col-8">

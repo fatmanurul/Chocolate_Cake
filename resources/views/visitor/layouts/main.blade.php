@@ -52,6 +52,7 @@ body {
         <!-- memberitahu halaman child -->
       <div class="container">
       @yield('navigation')
+      @yield('search')
           <div class="row">
         @yield('container') 
             <div class="col-4">
@@ -63,7 +64,7 @@ body {
               Sejarah Cake :  
               </p></b></h5>
               <hr>
-              <img src="../img/ck1.jpg" style="height: 410px; width: 410px; mb-4;" alt="" >
+              <img src="../img/ck1.jpg" style="height: 400px; width: 400px; mb-4;" alt="" >
 <div style="text-align: justify;" class="mt-4">
     <p>
     Bolu atau kue bolu (dari bahasa Portugis: bolo; bahasa Inggris: cake) adalah kue berbahan dasar tepung (umumnya tepung terigu), gula, dan telur. Kue bolu dan cake umumnya dimatangkan dengan cara dipanggang di dalam oven, walaupun ada juga bolu yang dikukus, misalnya: bolu kukus atau brownies kukus. Cake yang dihias dengan lapisan dari krim mentega, fondant, atau marzipan disebut kue tart (kue tarcis).

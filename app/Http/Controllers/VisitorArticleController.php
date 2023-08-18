@@ -12,14 +12,25 @@ class VisitorArticleController extends Controller
 {
     public function index(){
        
+        // dd(request('search'));
         $articles = Article::join('categories','categories.ctg_id', 'articles.art_category_id')
                            ->get();
         $category = Category::all();//menampilkan kategori di filter kategori
     //  dd($category);
-        return view ('visitor.visitor',[
-            'articles' => $articles,
-            'category' => $category
-        ]);//mengirimkan data kategori ke view
+    $search = Article::query();//cari data didalam artikel lalu urutkan berdasarkan yang paling baru
+
+    if (request('search')) {
+        $search->where('art_title', 'like', '%' . request('search') . '%');
+        $searchResults = $search->get(); // Execute the query and get results
+    } else {
+        $searchResults = collect(); // Initialize an empty collection if no search query
+    }
+    
+    return view('visitor.visitor', [
+        'articles' => $articles,
+        'category' => $category,
+        'searchResults' => $searchResults, // Pass search results to the view
+    ]);//mengirimkan data kategori ke view
        }
    
     public function show($slug){
