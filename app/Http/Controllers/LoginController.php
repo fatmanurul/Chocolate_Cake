@@ -21,18 +21,18 @@ class LoginController extends Controller
             'email' => 'Email tidak valid!'
         ];
 
-       $credentials = $request->validate([
+       $credentials = $request->validate([//validasi
         'usr_email' => 'required|email:dns',
         'usr_password' => 'required'
        ],$messages);
 
-       $attempt = [
+       $attempt = [//jika percobaan login yang dilakukan credentials berhasil akan dipindahkan ke sebuah halaman tapi jika gagal kita akan kembalikan ke halaman login dengan mengirimkan pesan eror
         'usr_email' => $request->usr_email,
         'password' => $request->usr_password
        ];
       
        if(Auth::attempt($attempt)) {
-        $request->session()->regenerate();
+        $request->session()->regenerate();//session di generate(untuk menghindari teknik kejahatan session fixation)
         return redirect()->intended('/admin/dashboard');
        }
 

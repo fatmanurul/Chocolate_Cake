@@ -17,19 +17,16 @@ class VisitorArticleController extends Controller
                            ->get();
         $category = Category::all();//menampilkan kategori di filter kategori
     //  dd($category);
-    $search = Article::query();//cari data didalam artikel lalu urutkan berdasarkan yang paling baru
+       $search = Article::latest();//cari data didalam artikel lalu urutkan berdasarkan yang paling baru
 
-    if (request('search')) {
-        $search->where('art_title', 'like', '%' . request('search') . '%');
-        $searchResults = $search->get(); // Execute the query and get results
-    } else {
-        $searchResults = collect(); // Initialize an empty collection if no search query
-    }
+    if(request('search')) {//jika ada sesuatu yang ditulis dikolom pencarian akan ditambahkan ke query
+        $search->where('art_title', 'like', '%' . request('search') . '%');//mencari apapun yang ada didepanya dan apappun yang ada dibelakangnya
+    } 
     
     return view('visitor.visitor', [
         'articles' => $articles,
         'category' => $category,
-        'searchResults' => $searchResults, // Pass search results to the view
+        'search' => $search->get() //query dilakukan disini
     ]);//mengirimkan data kategori ke view
        }
    
