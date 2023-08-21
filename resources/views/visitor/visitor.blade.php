@@ -60,13 +60,15 @@ footer .credit a {
   <div class="col-md-6">
         <form action="/">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="search.." name="search" value="{{request('search') }}">
-            <button class="btn btn-primary custom-button" type="submit">Search</button>
+            <input type="text" class="form-control" placeholder="Cari Artikel" name="search"
+             value="{{request('search') }}">
+            <button class="btn btn-primary custom-button" type="submit">Cari</button>
           </div>
         </form>
   </div>
 </div>
 @endsection
+
 @section('container')
 
 <div class="col-8">
@@ -80,7 +82,11 @@ footer .credit a {
                  <img src="{{asset($articles->art_image)}}" style="height: 700px; width: 700px" class="card-img-top" alt="...">
                  <div class="card-body">
                          <div class="card-title" style="font-family:Lucida Bright;">
-                         <h4>{{ $articles->art_title }}</h4></div>
+                         <h4>{{ $articles->art_title }}</h4></div>  
+                         <div class="card-title">
+                         <small>{{ \Carbon\Carbon::parse($articles->art_created_at)->diffForHumans() }}</small>{{-- dari pustaka Carbon untuk mem-parsing (menguraikan) tanggal yang disimpan dalam properti art_created_at dari objek $articles. Ini mengubah tanggal yang mungkin dalam format tertentu menjadi objek Carbon yang dapat dengan mudah dimanipulasi. --}}
+                         {{-- diffForHumans(): Setelah tanggal diuraikan menjadi objek Carbon, kita menggunakan metode diffForHumans() untuk menghitung perbedaan antara tanggal itu dan waktu sekarang. Hasilnya adalah string yang menunjukkan waktu relatif, misalnya "2 jam yang lalu", "3 hari yang lalu", "1 minggu yang akan datang", dan sejenisnya. --}}
+                         </div> 
                          <h6 style="font-family:Verdana;">{{ $articles->art_excerpt }}</h6>
                  </div>
 
@@ -96,7 +102,7 @@ footer .credit a {
 @endforeach
 </div>
 @endsection
-@section('kategori')
+@section('categories')
 <h5><b><p style = "font-family:Perpetua; color:RGB(160, 97, 36);">
               Cari Kategori :
               </p></b></h5>
@@ -104,7 +110,7 @@ footer .credit a {
               <select onChange="document.location.href=this.options[this.selectedIndex].value;" class="form-select">
               <option value="/">Semua</option>
               @foreach ($category as $category)
-              @if($category->ctg_status == 1)
+              @if($category->ctg_status == 1){{-- menampilkan kategori yang hanya berstatus aktif --}}
               <option value="/categories/{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
               @endif
               @endforeach

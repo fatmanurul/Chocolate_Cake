@@ -36,12 +36,17 @@ Halaman Tambah Artikel
   <div class="mb-3">
     <label for="category" class="form-label">Kategori</label>
     <select class="form-select" name="ctg_id">
-    <option value="/">Pilih Kategori</option>
-    @foreach ($categories as $category)
-      <option value="{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
-    @endforeach
- </select>
-  </div>
+        <option value="/">Pilih Kategori</option>
+        @foreach ($categories as $category)
+            <option value="{{$category->ctg_id}}">{{ $category->ctg_name}}</option>
+        @endforeach
+    </select>
+    @error('art_category_id') <!-- Menampilkan pesan error untuk field ctg_id -->
+    <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+
   <div class="mb-3">
     <label for="art_excerpt" class="form-label">Kutipan</label>
     <input type="text" class="form-control @error ('art_excerpt') is-invalid @enderror" id="art_excerpt" name="art_excerpt"  autofocus value="{{old('art_excerpt')}}">
@@ -64,7 +69,7 @@ Halaman Tambah Artikel
 </div>
 
 <div class="mb-3">
-        <label for="art_content" class="form-label">Isi Artikel</label>
+       <label for="art_content" class="form-label">Isi Artikel</label>
         @error('art_content')
             <p class="text-danger">{{ $message }}</p>
         @enderror
@@ -78,20 +83,6 @@ Halaman Tambah Artikel
 
 
 <script>
-$('.summernote').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-      });
   function previewImage(){
  // menangkap variabel image dan mengambil inputan image
  const art_image = document.querySelector('#art_image');
@@ -108,6 +99,6 @@ $('.summernote').summernote({
   oFReader.onload = function(oFREvent){
     imgPreview.src = oFREvent.target.result;
   }
-  }
+}
 </script>
 @endsection 

@@ -23,7 +23,7 @@ use App\Http\Controllers\CommentController;
 */
 
 // route halaman awal
-Route::get('/', [VisitorArticleController::class,'index']);
+Route::get('/', [VisitorArticleController::class, 'index']);
 Route::get('/articles/{slug}', [VisitorArticleController::class,'show']);
 Route::get('/categories/{id}', [VisitorArticleController::class, 'category']);
 

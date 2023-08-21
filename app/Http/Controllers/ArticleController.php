@@ -66,6 +66,7 @@ class ArticleController extends Controller
                 'required',
                 'max:100',
             ],
+            'art_category_id' => 'required',
             'art_excerpt' => 'required|max:100',
             'art_image' => 'required|image',
             'art_content' => 'required'

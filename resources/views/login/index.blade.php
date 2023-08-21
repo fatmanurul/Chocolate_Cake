@@ -17,7 +17,7 @@
     <!-- Agar tulisan berada di dalam container -->
     <div class="container mt-4">
         <!-- memberitahu halaman child -->
-        <div class="row justify-content-center">
+    <div class="row justify-content-center">
     <div class="col-md-4">
 
       @if(session()->has ('loginError'))
@@ -36,18 +36,18 @@
               <input type="text" name="usr_email" class="form-control @error('usr_email') is-invalid @enderror" id="usr_email" autofocus  value="{{old('usr_email')}}">
               <label for="usr_email">Email</label>
               @error('usr_email')
-                            <div class="invalid-feedback">
+                          <div class="invalid-feedback">
                             {{ $message }}
-                            </div>
+                          </div>
                         @enderror
             </div>
             <div class="form-floating">
               <input type="password" name="usr_password" class="form-control class @error('usr_password') is-invalid @enderror" id="usr_password" placeholder="usr_password" >
               <label for="usr_password">Kata Sandi</label>
               @error('usr_password')
-                            <div class="invalid-feedback">
+                          <div class="invalid-feedback">
                             {{ $message }}
-                            </div>
+                          </div>
                         @enderror
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>

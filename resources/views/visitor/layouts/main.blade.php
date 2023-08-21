@@ -38,9 +38,11 @@ body {
       background-position: center center; /* Center the background image */
     }
 
-    
-
+a {
+  color: rgb(202, 141, 109);
+}
 </style>
+<script src="{{ asset('vendors') }}/jquery/jquery.min.js"></script>
   </head>
   <body>
 <!-- kasih tau ada navbar -->
@@ -58,7 +60,7 @@ body {
             <div class="col-4">
               <h2><p style="color:RGB(197, 104, 62);font-family:Lucida Bright; text-align:center; margin-top:17px; text-shadow: 1px 1px 1px grey;">Kreasikan kreatifitasmu dengan <span style="color:RGB(136, 74, 49);">memulai membuat cake!</span></h2></p>
               <hr>
-              @yield('kategori')
+              @yield('categories')
               <hr>
               <h5><b><p style = "font-family:Poppins; color:RGB(43, 43, 41); text-align: center;">
               Sejarah Cake :  
@@ -74,7 +76,7 @@ body {
               <small><a href="https://id.wikipedia.org/wiki/Bolu">Selengkapnya di wikipedia cake</a></small>
               </div>
             </div>
-            @yield('komentar')
+            @yield('comments')
           </div >
         </div >
      </div >
